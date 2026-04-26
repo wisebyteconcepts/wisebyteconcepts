@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { ArrowRight, Code2, Sparkles, Zap, Layers, Globe, ShieldCheck, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Code2, Sparkles, Zap, Layers, Globe, ShieldCheck, Mail, Github, Linkedin, Twitter, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/wbc-logo.png";
 
 const services = [
