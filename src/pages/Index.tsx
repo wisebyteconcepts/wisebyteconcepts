@@ -141,24 +141,40 @@ const Index = () => {
           <p className="text-muted-foreground text-lg">A glimpse at recent collaborations across SaaS, AI, fintech, and more.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <Card key={p.title} className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant cursor-pointer">
-              <div className={`aspect-[4/3] bg-gradient-to-br ${p.color} relative overflow-hidden`}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
-                    <Code2 className="w-8 h-8 text-primary" />
+          {projects.map((p) => {
+            const CardInner = (
+              <>
+                <div className={`aspect-[4/3] bg-gradient-to-br ${p.color} relative overflow-hidden`}>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
+                      {p.tag === "Desktop App" ? <Terminal className="w-8 h-8 text-primary" /> : <Globe2Icon />}
+                    </div>
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-background/90 text-foreground border-0 backdrop-blur">{p.tag}</Badge>
                   </div>
                 </div>
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-background/90 text-foreground border-0 backdrop-blur">{p.tag}</Badge>
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors flex items-center gap-2">
+                    {p.title}
+                    {p.url && <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{p.desc}</p>
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">{p.title}</h3>
-                <p className="text-sm text-muted-foreground">{p.desc}</p>
-              </div>
-            </Card>
-          ))}
+              </>
+            );
+            return p.url ? (
+              <a key={p.title} href={p.url} target="_blank" rel="noopener noreferrer">
+                <Card className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant cursor-pointer h-full">
+                  {CardInner}
+                </Card>
+              </a>
+            ) : (
+              <Card key={p.title} className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant h-full">
+                {CardInner}
+              </Card>
+            );
+          })}
         </div>
       </section>
 
