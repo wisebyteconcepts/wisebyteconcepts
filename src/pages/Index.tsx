@@ -42,6 +42,14 @@ const stats = [
 
 const Index = () => {
   const { theme, toggleTheme } = useTheme();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`New project inquiry from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+    window.location.href = `mailto:wisebyteconcepts@gmail.com?subject=${subject}&body=${body}`;
+  };
   useEffect(() => {
     document.title = "Wise Byte Concepts — Software Studio for Modern Products";
     const meta = document.querySelector('meta[name="description"]');
