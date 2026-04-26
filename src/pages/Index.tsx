@@ -147,7 +147,7 @@ const Index = () => {
                 <div className={`aspect-[4/3] bg-gradient-to-br ${p.color} relative overflow-hidden`}>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
-                      {p.tag === "Desktop App" ? <Terminal className="w-8 h-8 text-primary" /> : <Globe2Icon />}
+                      {p.tag === "Desktop App" ? <Terminal className="w-8 h-8 text-primary" /> : <Globe className="w-8 h-8 text-primary" />}
                     </div>
                   </div>
                   <div className="absolute top-4 left-4">
