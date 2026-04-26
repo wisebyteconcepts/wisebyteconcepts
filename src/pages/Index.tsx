@@ -200,24 +200,21 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Process */}
-      <section id="process" className="container py-24">
+      {/* Skills */}
+      <section id="skills" className="container py-24">
         <div className="max-w-2xl mb-12">
-          <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">How we work</Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">A calm, deliberate process.</h2>
+          <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">Toolkit</Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Skills & tools we work with.</h2>
+          <p className="text-muted-foreground text-lg">A blend of design and development tools we use to bring concepts to life.</p>
         </div>
-        <div className="grid md:grid-cols-4 gap-6">
-          {[
-            { n: "01", t: "Discover", d: "We listen, audit, and align on what success looks like." },
-            { n: "02", t: "Design", d: "Wireframes evolve into systems and high-fidelity prototypes." },
-            { n: "03", t: "Build", d: "Tight feedback loops, weekly demos, production-quality code." },
-            { n: "04", t: "Launch", d: "We ship, monitor, and iterate alongside your team." },
-          ].map((step) => (
-            <div key={step.n} className="relative">
-              <div className="text-sm font-mono text-primary mb-3">{step.n}</div>
-              <h3 className="font-semibold text-xl mb-2">{step.t}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{step.d}</p>
-            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {skills.map((s) => (
+            <Card key={s.name} className="p-6 flex flex-col items-center justify-center gap-3 border-border/50 hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
+                <s.icon className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-center">{s.name}</span>
+            </Card>
           ))}
         </div>
       </section>
