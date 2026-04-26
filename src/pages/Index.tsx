@@ -7,21 +7,27 @@ import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/wbc-logo.png";
 
 const services = [
-  { icon: Code2, title: "Web Development", desc: "Production-ready React, Next.js, and TypeScript apps engineered for scale." },
-  { icon: Layers, title: "Product Design", desc: "Interfaces that feel inevitable — clean systems, considered motion, real craft." },
-  { icon: Zap, title: "AI Integrations", desc: "Ship intelligent features with LLMs, embeddings, and custom workflows." },
-  { icon: Globe, title: "Cloud & APIs", desc: "Robust backends, edge functions, and integrations that just work." },
-  { icon: ShieldCheck, title: "Security & QA", desc: "Hardened auth, RLS, testing pipelines — built right from day one." },
-  { icon: Sparkles, title: "Brand Systems", desc: "Logos, tokens, and design systems that scale across every surface." },
+  { icon: Palette, title: "Graphic Design", desc: "Brand identities, marketing collateral, and visuals with a polished, modern edge." },
+  { icon: Layout, title: "Web Design", desc: "Responsive, conversion-focused websites that look sharp on every device." },
+  { icon: PenTool, title: "UI/UX Development", desc: "Thoughtful interfaces and user flows backed by clean, production-ready code." },
+  { icon: Smartphone, title: "Desktop & Mobile Apps", desc: "Cross-platform apps engineered for performance, reliability, and scale." },
+];
+
+const skills = [
+  { icon: ImageIcon, name: "Photoshop" },
+  { icon: FileImage, name: "Adobe InDesign" },
+  { icon: PenTool, name: "Adobe Illustrator" },
+  { icon: Figma, name: "Figma" },
+  { icon: Terminal, name: ".NET" },
+  { icon: GitBranch, name: "GitHub" },
 ];
 
 const projects = [
-  { tag: "SaaS", title: "Lumen Analytics", desc: "Real-time dashboard suite for product teams.", color: "from-blue-500/20 to-indigo-500/20" },
-  { tag: "AI", title: "Drafty AI", desc: "Content workflows powered by GPT-4 & embeddings.", color: "from-violet-500/20 to-blue-500/20" },
-  { tag: "Fintech", title: "Vaultline", desc: "Payments + ledger platform for digital banks.", color: "from-blue-600/20 to-cyan-500/20" },
-  { tag: "E-commerce", title: "Maker Market", desc: "Headless storefront with Shopify & Sanity.", color: "from-sky-500/20 to-blue-500/20" },
-  { tag: "Mobile", title: "Pulse Health", desc: "Cross-platform wellness tracker with Expo.", color: "from-indigo-500/20 to-blue-500/20" },
-  { tag: "Platform", title: "Orbit Studio", desc: "Internal tooling for a media organization.", color: "from-blue-500/20 to-purple-500/20" },
+  { tag: "Web", title: "Statoniq", desc: "Corporate website build & design.", url: "https://statoniq.com", color: "from-blue-500/20 to-indigo-500/20" },
+  { tag: "Web", title: "Essence4World", desc: "Brand-driven content platform.", url: "https://essence4world.com", color: "from-violet-500/20 to-blue-500/20" },
+  { tag: "Healthcare", title: "Valley Hospital Silchar", desc: "Hospital website with patient-first UX.", url: "https://valleyhospitalsilchar.com", color: "from-blue-600/20 to-cyan-500/20" },
+  { tag: "Real Estate", title: "Ivory Squares", desc: "Property showcase & lead generation site.", url: "https://ivorysquares.com", color: "from-sky-500/20 to-blue-500/20" },
+  { tag: "Desktop App", title: "InventoryPro", desc: "Desktop inventory management application.", url: null, color: "from-indigo-500/20 to-blue-500/20" },
 ];
 
 const stats = [
