@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { ArrowRight, Code2, Sparkles, Zap, Layers, Globe, ShieldCheck, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Code2, Sparkles, Zap, Layers, Globe, ShieldCheck, Mail, Github, Linkedin, Twitter, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/wbc-logo.png";
 
 const services = [
@@ -31,6 +32,7 @@ const stats = [
 ];
 
 const Index = () => {
+  const { theme, toggleTheme } = useTheme();
   useEffect(() => {
     document.title = "Wise Byte Concepts — Software Studio for Modern Products";
     const meta = document.querySelector('meta[name="description"]');
@@ -59,9 +61,20 @@ const Index = () => {
             <a href="#process" className="hover:text-foreground transition-colors">Process</a>
             <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
           </div>
-          <Button asChild size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-elegant">
-            <a href="#contact">Start a project <ArrowRight className="ml-1 h-4 w-4" /></a>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={toggleTheme}
+              size="icon"
+              variant="ghost"
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              className="rounded-full"
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </Button>
+            <Button asChild size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-elegant">
+              <a href="#contact">Start a project <ArrowRight className="ml-1 h-4 w-4" /></a>
+            </Button>
+          </div>
         </nav>
       </header>
 
