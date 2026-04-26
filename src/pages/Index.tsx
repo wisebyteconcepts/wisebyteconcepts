@@ -1,16 +1,227 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import { ArrowRight, Code2, Sparkles, Zap, Layers, Globe, ShieldCheck, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import logo from "@/assets/wbc-logo.png";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const services = [
+  { icon: Code2, title: "Web Development", desc: "Production-ready React, Next.js, and TypeScript apps engineered for scale." },
+  { icon: Layers, title: "Product Design", desc: "Interfaces that feel inevitable — clean systems, considered motion, real craft." },
+  { icon: Zap, title: "AI Integrations", desc: "Ship intelligent features with LLMs, embeddings, and custom workflows." },
+  { icon: Globe, title: "Cloud & APIs", desc: "Robust backends, edge functions, and integrations that just work." },
+  { icon: ShieldCheck, title: "Security & QA", desc: "Hardened auth, RLS, testing pipelines — built right from day one." },
+  { icon: Sparkles, title: "Brand Systems", desc: "Logos, tokens, and design systems that scale across every surface." },
+];
+
+const projects = [
+  { tag: "SaaS", title: "Lumen Analytics", desc: "Real-time dashboard suite for product teams.", color: "from-blue-500/20 to-indigo-500/20" },
+  { tag: "AI", title: "Drafty AI", desc: "Content workflows powered by GPT-4 & embeddings.", color: "from-violet-500/20 to-blue-500/20" },
+  { tag: "Fintech", title: "Vaultline", desc: "Payments + ledger platform for digital banks.", color: "from-blue-600/20 to-cyan-500/20" },
+  { tag: "E-commerce", title: "Maker Market", desc: "Headless storefront with Shopify & Sanity.", color: "from-sky-500/20 to-blue-500/20" },
+  { tag: "Mobile", title: "Pulse Health", desc: "Cross-platform wellness tracker with Expo.", color: "from-indigo-500/20 to-blue-500/20" },
+  { tag: "Platform", title: "Orbit Studio", desc: "Internal tooling for a media organization.", color: "from-blue-500/20 to-purple-500/20" },
+];
+
+const stats = [
+  { value: "40+", label: "Products shipped" },
+  { value: "12", label: "Industries served" },
+  { value: "99.9%", label: "Uptime SLA" },
+  { value: "4.9/5", label: "Client rating" },
+];
+
+const Index = () => {
+  useEffect(() => {
+    document.title = "Wise Byte Concepts — Software Studio for Modern Products";
+    const meta = document.querySelector('meta[name="description"]');
+    const content = "Wise Byte Concepts builds web, AI, and cloud products with craft. Explore our work, services, and approach.";
+    if (meta) meta.setAttribute("content", content);
+    else {
+      const m = document.createElement("meta");
+      m.name = "description";
+      m.content = content;
+      document.head.appendChild(m);
+    }
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      {/* Nav */}
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/50">
+        <nav className="container flex items-center justify-between h-16">
+          <a href="#home" className="flex items-center gap-2.5">
+            <img src={logo} alt="Wise Byte Concepts logo" className="w-8 h-8 rounded-lg" />
+            <span className="font-semibold tracking-tight">Wise Byte Concepts</span>
+          </a>
+          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+            <a href="#work" className="hover:text-foreground transition-colors">Work</a>
+            <a href="#services" className="hover:text-foreground transition-colors">Services</a>
+            <a href="#process" className="hover:text-foreground transition-colors">Process</a>
+            <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
+          </div>
+          <Button asChild size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-elegant">
+            <a href="#contact">Start a project <ArrowRight className="ml-1 h-4 w-4" /></a>
+          </Button>
+        </nav>
+      </header>
+
+      {/* Hero */}
+      <section id="home" className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-hero" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-mesh opacity-60" aria-hidden />
+        <div className="container relative py-24 md:py-36">
+          <div className="max-w-3xl animate-fade-up">
+            <Badge variant="secondary" className="mb-6 bg-accent text-accent-foreground border-0 px-3 py-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mr-2 animate-pulse" />
+              Now booking Q3 projects
+            </Badge>
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6">
+              We build <span className="text-gradient-primary">software</span> with intent.
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
+              Wise Byte Concepts is a small studio crafting modern web, AI, and cloud products
+              for ambitious teams. Thoughtful design. Engineered to last.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-elegant">
+                <a href="#work">View our work <ArrowRight className="ml-2 h-4 w-4" /></a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href="#services">Our services</a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Floating logo accent */}
+          <div className="hidden lg:block absolute right-10 top-24 animate-float">
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/30 blur-3xl rounded-full" aria-hidden />
+              <img src={logo} alt="" className="relative w-48 h-48 rounded-3xl shadow-glow" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="border-y border-border/50 bg-secondary/30">
+        <div className="container py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((s) => (
+            <div key={s.label} className="text-center md:text-left">
+              <div className="text-3xl md:text-4xl font-bold text-gradient-primary">{s.value}</div>
+              <div className="text-sm text-muted-foreground mt-1">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Work */}
+      <section id="work" className="container py-24">
+        <div className="max-w-2xl mb-12">
+          <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">Selected Work</Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Products we're proud of.</h2>
+          <p className="text-muted-foreground text-lg">A glimpse at recent collaborations across SaaS, AI, fintech, and more.</p>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((p, i) => (
+            <Card key={p.title} className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant cursor-pointer">
+              <div className={`aspect-[4/3] bg-gradient-to-br ${p.color} relative overflow-hidden`}>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
+                    <Code2 className="w-8 h-8 text-primary" />
+                  </div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <Badge className="bg-background/90 text-foreground border-0 backdrop-blur">{p.tag}</Badge>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">{p.title}</h3>
+                <p className="text-sm text-muted-foreground">{p.desc}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="bg-secondary/40 border-y border-border/50">
+        <div className="container py-24">
+          <div className="max-w-2xl mb-12">
+            <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">What we do</Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Services, end to end.</h2>
+            <p className="text-muted-foreground text-lg">From first sketch to production deploy — one team, all the way through.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s) => (
+              <Card key={s.title} className="p-6 border-border/50 hover:border-primary/40 hover:shadow-soft transition-all duration-300 bg-background">
+                <div className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center mb-4">
+                  <s.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section id="process" className="container py-24">
+        <div className="max-w-2xl mb-12">
+          <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">How we work</Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">A calm, deliberate process.</h2>
+        </div>
+        <div className="grid md:grid-cols-4 gap-6">
+          {[
+            { n: "01", t: "Discover", d: "We listen, audit, and align on what success looks like." },
+            { n: "02", t: "Design", d: "Wireframes evolve into systems and high-fidelity prototypes." },
+            { n: "03", t: "Build", d: "Tight feedback loops, weekly demos, production-quality code." },
+            { n: "04", t: "Launch", d: "We ship, monitor, and iterate alongside your team." },
+          ].map((step) => (
+            <div key={step.n} className="relative">
+              <div className="text-sm font-mono text-primary mb-3">{step.n}</div>
+              <h3 className="font-semibold text-xl mb-2">{step.t}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{step.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="contact" className="container pb-24">
+        <Card className="relative overflow-hidden border-0 bg-gradient-primary p-12 md:p-16 text-primary-foreground shadow-elegant">
+          <div className="absolute inset-0 bg-gradient-mesh opacity-20" aria-hidden />
+          <div className="relative max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Have a concept worth building?</h2>
+            <p className="text-lg opacity-90 mb-8">Tell us about your project. We typically respond within one business day.</p>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90">
+                <a href="mailto:hello@wisebyteconcepts.com"><Mail className="mr-2 h-4 w-4" /> hello@wisebyteconcepts.com</a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+                <a href="#work">See more work</a>
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border/50">
+        <div className="container py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <img src={logo} alt="" className="w-7 h-7 rounded-md" />
+            <span className="text-sm text-muted-foreground">© {new Date().getFullYear()} Wise Byte Concepts. All rights reserved.</span>
+          </div>
+          <div className="flex items-center gap-4 text-muted-foreground">
+            <a href="#" aria-label="GitHub" className="hover:text-primary transition-colors"><Github className="w-4 h-4" /></a>
+            <a href="#" aria-label="LinkedIn" className="hover:text-primary transition-colors"><Linkedin className="w-4 h-4" /></a>
+            <a href="#" aria-label="Twitter" className="hover:text-primary transition-colors"><Twitter className="w-4 h-4" /></a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
