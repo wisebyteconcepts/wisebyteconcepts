@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ArrowRight, Code2, Sparkles, Zap, Layers, Globe, ShieldCheck, Mail, Github, Linkedin, Twitter, Sun, Moon } from "lucide-react";
+import { ArrowRight, Code2, Palette, Layout, Smartphone, Mail, Github, Linkedin, Twitter, Sun, Moon, Image as ImageIcon, FileImage, PenTool, Figma, Terminal, GitBranch, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,21 +7,27 @@ import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/wbc-logo.png";
 
 const services = [
-  { icon: Code2, title: "Web Development", desc: "Production-ready React, Next.js, and TypeScript apps engineered for scale." },
-  { icon: Layers, title: "Product Design", desc: "Interfaces that feel inevitable — clean systems, considered motion, real craft." },
-  { icon: Zap, title: "AI Integrations", desc: "Ship intelligent features with LLMs, embeddings, and custom workflows." },
-  { icon: Globe, title: "Cloud & APIs", desc: "Robust backends, edge functions, and integrations that just work." },
-  { icon: ShieldCheck, title: "Security & QA", desc: "Hardened auth, RLS, testing pipelines — built right from day one." },
-  { icon: Sparkles, title: "Brand Systems", desc: "Logos, tokens, and design systems that scale across every surface." },
+  { icon: Palette, title: "Graphic Design", desc: "Brand identities, marketing collateral, and visuals with a polished, modern edge." },
+  { icon: Layout, title: "Web Design", desc: "Responsive, conversion-focused websites that look sharp on every device." },
+  { icon: PenTool, title: "UI/UX Development", desc: "Thoughtful interfaces and user flows backed by clean, production-ready code." },
+  { icon: Smartphone, title: "Desktop & Mobile Apps", desc: "Cross-platform apps engineered for performance, reliability, and scale." },
+];
+
+const skills = [
+  { icon: ImageIcon, name: "Photoshop" },
+  { icon: FileImage, name: "Adobe InDesign" },
+  { icon: PenTool, name: "Adobe Illustrator" },
+  { icon: Figma, name: "Figma" },
+  { icon: Terminal, name: ".NET" },
+  { icon: GitBranch, name: "GitHub" },
 ];
 
 const projects = [
-  { tag: "SaaS", title: "Lumen Analytics", desc: "Real-time dashboard suite for product teams.", color: "from-blue-500/20 to-indigo-500/20" },
-  { tag: "AI", title: "Drafty AI", desc: "Content workflows powered by GPT-4 & embeddings.", color: "from-violet-500/20 to-blue-500/20" },
-  { tag: "Fintech", title: "Vaultline", desc: "Payments + ledger platform for digital banks.", color: "from-blue-600/20 to-cyan-500/20" },
-  { tag: "E-commerce", title: "Maker Market", desc: "Headless storefront with Shopify & Sanity.", color: "from-sky-500/20 to-blue-500/20" },
-  { tag: "Mobile", title: "Pulse Health", desc: "Cross-platform wellness tracker with Expo.", color: "from-indigo-500/20 to-blue-500/20" },
-  { tag: "Platform", title: "Orbit Studio", desc: "Internal tooling for a media organization.", color: "from-blue-500/20 to-purple-500/20" },
+  { tag: "Web", title: "Statoniq", desc: "Corporate website build & design.", url: "https://statoniq.com", color: "from-blue-500/20 to-indigo-500/20" },
+  { tag: "Web", title: "Essence4World", desc: "Brand-driven content platform.", url: "https://essence4world.com", color: "from-violet-500/20 to-blue-500/20" },
+  { tag: "Healthcare", title: "Valley Hospital Silchar", desc: "Hospital website with patient-first UX.", url: "https://valleyhospitalsilchar.com", color: "from-blue-600/20 to-cyan-500/20" },
+  { tag: "Real Estate", title: "Ivory Squares", desc: "Property showcase & lead generation site.", url: "https://ivorysquares.com", color: "from-sky-500/20 to-blue-500/20" },
+  { tag: "Desktop App", title: "InventoryPro", desc: "Desktop inventory management application.", url: null, color: "from-indigo-500/20 to-blue-500/20" },
 ];
 
 const stats = [
@@ -58,7 +64,7 @@ const Index = () => {
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
             <a href="#work" className="hover:text-foreground transition-colors">Work</a>
             <a href="#services" className="hover:text-foreground transition-colors">Services</a>
-            <a href="#process" className="hover:text-foreground transition-colors">Process</a>
+            <a href="#skills" className="hover:text-foreground transition-colors">Skills</a>
             <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
           </div>
           <div className="flex items-center gap-2">
@@ -135,24 +141,40 @@ const Index = () => {
           <p className="text-muted-foreground text-lg">A glimpse at recent collaborations across SaaS, AI, fintech, and more.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <Card key={p.title} className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant cursor-pointer">
-              <div className={`aspect-[4/3] bg-gradient-to-br ${p.color} relative overflow-hidden`}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
-                    <Code2 className="w-8 h-8 text-primary" />
+          {projects.map((p) => {
+            const CardInner = (
+              <>
+                <div className={`aspect-[4/3] bg-gradient-to-br ${p.color} relative overflow-hidden`}>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
+                      {p.tag === "Desktop App" ? <Terminal className="w-8 h-8 text-primary" /> : <Globe className="w-8 h-8 text-primary" />}
+                    </div>
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-background/90 text-foreground border-0 backdrop-blur">{p.tag}</Badge>
                   </div>
                 </div>
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-background/90 text-foreground border-0 backdrop-blur">{p.tag}</Badge>
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors flex items-center gap-2">
+                    {p.title}
+                    {p.url && <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{p.desc}</p>
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">{p.title}</h3>
-                <p className="text-sm text-muted-foreground">{p.desc}</p>
-              </div>
-            </Card>
-          ))}
+              </>
+            );
+            return p.url ? (
+              <a key={p.title} href={p.url} target="_blank" rel="noopener noreferrer">
+                <Card className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant cursor-pointer h-full">
+                  {CardInner}
+                </Card>
+              </a>
+            ) : (
+              <Card key={p.title} className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant h-full">
+                {CardInner}
+              </Card>
+            );
+          })}
         </div>
       </section>
 
@@ -178,24 +200,21 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Process */}
-      <section id="process" className="container py-24">
+      {/* Skills */}
+      <section id="skills" className="container py-24">
         <div className="max-w-2xl mb-12">
-          <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">How we work</Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">A calm, deliberate process.</h2>
+          <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">Toolkit</Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Skills & tools we work with.</h2>
+          <p className="text-muted-foreground text-lg">A blend of design and development tools we use to bring concepts to life.</p>
         </div>
-        <div className="grid md:grid-cols-4 gap-6">
-          {[
-            { n: "01", t: "Discover", d: "We listen, audit, and align on what success looks like." },
-            { n: "02", t: "Design", d: "Wireframes evolve into systems and high-fidelity prototypes." },
-            { n: "03", t: "Build", d: "Tight feedback loops, weekly demos, production-quality code." },
-            { n: "04", t: "Launch", d: "We ship, monitor, and iterate alongside your team." },
-          ].map((step) => (
-            <div key={step.n} className="relative">
-              <div className="text-sm font-mono text-primary mb-3">{step.n}</div>
-              <h3 className="font-semibold text-xl mb-2">{step.t}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{step.d}</p>
-            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {skills.map((s) => (
+            <Card key={s.name} className="p-6 flex flex-col items-center justify-center gap-3 border-border/50 hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
+                <s.icon className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-center">{s.name}</span>
+            </Card>
           ))}
         </div>
       </section>
