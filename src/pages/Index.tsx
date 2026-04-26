@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Code2, Palette, Layout, Smartphone, Mail, Github, Linkedin, Twitter, Sun, Moon, Image as ImageIcon, FileImage, PenTool, Figma, Terminal, GitBranch, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/wbc-logo.png";
 
@@ -39,6 +42,14 @@ const stats = [
 
 const Index = () => {
   const { theme, toggleTheme } = useTheme();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`New project inquiry from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+    window.location.href = `mailto:wisebyteconcepts@gmail.com?subject=${subject}&body=${body}`;
+  };
   useEffect(() => {
     document.title = "Wise Byte Concepts — Software Studio for Modern Products";
     const meta = document.querySelector('meta[name="description"]');
@@ -221,19 +232,40 @@ const Index = () => {
 
       {/* CTA */}
       <section id="contact" className="container pb-24">
-        <Card className="relative overflow-hidden border-0 bg-gradient-primary p-12 md:p-16 text-primary-foreground shadow-elegant">
+        <Card className="relative overflow-hidden border-0 bg-gradient-primary p-8 md:p-12 text-primary-foreground shadow-elegant">
           <div className="absolute inset-0 bg-gradient-mesh opacity-20" aria-hidden />
-          <div className="relative max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Have a concept worth building?</h2>
-            <p className="text-lg opacity-90 mb-8">Tell us about your project. We typically respond within one business day.</p>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90">
-                <a href="mailto:hello@wisebyteconcepts.com"><Mail className="mr-2 h-4 w-4" /> hello@wisebyteconcepts.com</a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
-                <a href="#work">See more work</a>
-              </Button>
+          <div className="relative grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Have a concept worth building?</h2>
+              <p className="text-lg opacity-90 mb-8">Tell us about your project. We typically respond within one business day.</p>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90">
+                  <a href="mailto:wisebyteconcepts@gmail.com"><Mail className="mr-2 h-4 w-4" /> wisebyteconcepts@gmail.com</a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+                  <a href="https://github.com/wisebyteconcepts" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </Button>
+              </div>
             </div>
+            <form onSubmit={handleSubmit} className="bg-background/95 backdrop-blur rounded-xl p-6 space-y-4 text-foreground shadow-soft">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input id="name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Jane Doe" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="jane@company.com" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="message">Message</Label>
+                <Textarea id="message" required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell us about your project..." />
+              </div>
+              <Button type="submit" size="lg" className="w-full bg-gradient-primary hover:opacity-90">
+                Send message <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </form>
           </div>
         </Card>
       </section>
@@ -246,12 +278,12 @@ const Index = () => {
             <span className="text-sm text-muted-foreground">© {new Date().getFullYear()} Wise Byte Concepts. All rights reserved.</span>
           </div>
           <div className="flex items-center gap-4 text-muted-foreground">
-            <a href="#" aria-label="GitHub" className="hover:text-primary transition-colors"><Github className="w-4 h-4" /></a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-primary transition-colors"><Linkedin className="w-4 h-4" /></a>
-            <a href="#" aria-label="Twitter" className="hover:text-primary transition-colors"><Twitter className="w-4 h-4" /></a>
+            <a href="https://github.com/wisebyteconcepts" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary transition-colors"><Github className="w-4 h-4" /></a>
+            <a href="mailto:wisebyteconcepts@gmail.com" aria-label="Email" className="hover:text-primary transition-colors"><Mail className="w-4 h-4" /></a>
           </div>
         </div>
       </footer>
+
     </div>
   );
 };
