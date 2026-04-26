@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ArrowRight, Code2, Palette, Layout, Smartphone, Mail, Github, Linkedin, Twitter, Sun, Moon, Image as ImageIcon, FileImage, PenTool, Figma, Terminal, GitBranch } from "lucide-react";
+import { ArrowRight, Code2, Palette, Layout, Smartphone, Mail, Github, Linkedin, Twitter, Sun, Moon, Image as ImageIcon, FileImage, PenTool, Figma, Terminal, GitBranch, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
