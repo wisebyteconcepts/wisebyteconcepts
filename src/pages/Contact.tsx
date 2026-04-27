@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Mail, Github, Linkedin, Twitter, Phone, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import Navbar from "@/components/Navbar";
+import { Button } from "@/shared/components/ui/button";
+import { Card } from "@/shared/components/ui/card";
+import { Input } from "@/shared/components/ui/input";
+import { Textarea } from "@/shared/components/ui/textarea";
+import { Label } from "@/shared/components/ui/label";
+import Navbar from "@/shared/components/Navbar";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "", phone: "", subject: "" });

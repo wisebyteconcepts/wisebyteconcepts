@@ -1,5 +1,5 @@
 import { useTheme } from "@/hooks/use-theme";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import { Sun, Moon, ArrowRight, Github } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/wbc-logo.png";

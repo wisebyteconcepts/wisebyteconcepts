@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -10,44 +10,33 @@ import { Card } from "@/shared/components/ui/card";
 import { useLogin } from "@/features/auth/hooks/useLogin";
 import { useAuth } from "@/core/providers/AuthProvider";
 
-import { toast } from "sonner";
 import logo from "@/assets/wbc-logo.png";
 
 const AdminLogin = () => {
     const navigate = useNavigate();
-    const { user, loading } = useAuth();
+    const { user } = useAuth();
     const loginMutation = useLogin();
 
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    /**
-     * Handle redirect AFTER auth state resolves
-     */
-    //useEffect(() => {
-    //    if (!loading && user) {
-    //        navigate("/dashboard");
-    //    }
-    //}, [user, loading, navigate]);
+    // If already logged in → redirect
+    if (user) {
+        navigate("/dashboard");
+    }
 
-    /**
-     * Prevent rendering until auth state is known
-     */
-    if (loading) return null;
-
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
         loginMutation.mutate(
             { email, password },
             {
                 onSuccess: () => {
-                    toast.success("Login successful");
                     navigate("/dashboard");
-                },
+                },  
                 onError: (error: Error) => {
-                    toast.error(error.message || "Login failed");
+                    console.error("Login failed:", error.message);
                 },
             }
         );
@@ -62,7 +51,6 @@ const AdminLogin = () => {
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-4">
-                    {/* Email */}
                     <div>
                         <Label>Email</Label>
                         <Input
@@ -74,7 +62,6 @@ const AdminLogin = () => {
                         />
                     </div>
 
-                    {/* Password */}
                     <div>
                         <Label>Password</Label>
                         <div className="relative">
@@ -95,7 +82,6 @@ const AdminLogin = () => {
                         </div>
                     </div>
 
-                    {/* Submit */}
                     <Button
                         type="submit"
                         className="w-full"
