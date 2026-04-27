@@ -8,7 +8,7 @@ import { AdminLayout } from "@/layouts/AdminLayout";
 
 const DashboardPage = () => {
     const { user, roles } = useAuth();
-    const { services, products, resetToDefaults } = useData();
+    const { services, products, skills, resetToDefaults } = useData();
     const [showReset, setShowReset] = useState(false);
 
     const handleReset = () => {
@@ -26,7 +26,7 @@ const DashboardPage = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     <Card className="border-border/50 p-6">
                         <h3 className="mb-2 text-sm font-semibold text-muted-foreground">
                             Total services
@@ -38,6 +38,12 @@ const DashboardPage = () => {
                             Total products
                         </h3>
                         <p className="text-3xl font-bold">{products.length}</p>
+                    </Card>
+                    <Card className="border-border/50 p-6">
+                        <h3 className="mb-2 text-sm font-semibold text-muted-foreground">
+                            Total skills
+                        </h3>
+                        <p className="text-3xl font-bold">{skills.length}</p>
                     </Card>
                     <Card className="border-border/50 p-6">
                         <h3 className="mb-2 text-sm font-semibold text-muted-foreground">

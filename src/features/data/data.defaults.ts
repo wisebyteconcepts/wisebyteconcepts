@@ -1,7 +1,15 @@
 // src/features/data/data.defaults.ts
 
 import { Palette, Layout, PenTool, Smartphone } from "lucide-react";
-import type { Service, Product } from "./data.types";
+import type { Service, Product, Skill } from "./data.types";
+
+export const defaultSkills: Skill[] = [
+    { id: "react", name: "React", category: "Frontend", level: 95 },
+    { id: "typescript", name: "TypeScript", category: "Language", level: 90 },
+    { id: "tailwind", name: "Tailwind CSS", category: "Styling", level: 92 },
+    { id: "node", name: "Node.js", category: "Backend", level: 85 },
+    { id: "figma", name: "Figma", category: "Design", level: 88 },
+];
 
 
 

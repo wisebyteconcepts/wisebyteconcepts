@@ -4,7 +4,7 @@ import { LucideIcon } from "lucide-react";
 
 export interface Service {
     id: string;
-    icon: LucideIcon;
+    icon?: LucideIcon;
     title: string;
     description: string;
     fullDescription: string;
@@ -26,4 +26,12 @@ export interface Product {
     solutions: string[];
     technologies: string[];
     results: string[];
+}
+
+export interface Skill {
+    id: string;
+    name: string;
+    category: string;
+    level: number; // 0-100
+    icon?: string | null;
 }
