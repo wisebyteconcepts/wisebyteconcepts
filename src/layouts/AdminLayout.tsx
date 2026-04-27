@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { LayoutDashboard, LogOut, Package, Wrench } from "lucide-react";
+import { LayoutDashboard, LogOut, Package, Sparkles, Wrench } from "lucide-react";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { Button } from "@/shared/ui/button";
 import logo from "@/assets/wbc-logo.png";
@@ -8,6 +8,7 @@ const navItems = [
     { to: "/dashboard", label: "Overview", icon: LayoutDashboard, end: true },
     { to: "/dashboard/services", label: "Services", icon: Wrench },
     { to: "/dashboard/products", label: "Products", icon: Package },
+    { to: "/dashboard/skills", label: "Skills", icon: Sparkles },
 ];
 
 export const AdminLayout = ({ children }: { children: React.ReactNode }) => {

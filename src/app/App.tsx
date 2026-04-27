@@ -18,6 +18,9 @@ import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 import LoginPage from "@/pages/Auth/LoginPage";
 import DashboardPage from "@/pages/Dashboard/DashboardPage";
+import ServicesAdminPage from "@/pages/Dashboard/ServicesAdminPage";
+import ProductsAdminPage from "@/pages/Dashboard/ProductsAdminPage";
+import SkillsAdminPage from "@/pages/Dashboard/SkillsAdminPage";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +49,30 @@ const App = () => (
                                 element={
                                     <ProtectedRoute requireAdmin>
                                         <DashboardPage />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/dashboard/services"
+                                element={
+                                    <ProtectedRoute requireAdmin>
+                                        <ServicesAdminPage />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/dashboard/products"
+                                element={
+                                    <ProtectedRoute requireAdmin>
+                                        <ProductsAdminPage />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/dashboard/skills"
+                                element={
+                                    <ProtectedRoute requireAdmin>
+                                        <SkillsAdminPage />
                                     </ProtectedRoute>
                                 }
                             />
