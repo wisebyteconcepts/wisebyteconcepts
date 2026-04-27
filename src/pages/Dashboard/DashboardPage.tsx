@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut, Plus, Settings } from "lucide-react";
-import { Button } from "@/shared/components/ui/button";
-import { Card } from "@/shared/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
-import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/shared/ui/button";
+import { Card } from "@/shared/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
+import { useAuth } from "@/app/providers/AuthProvider";
 import { useData } from "@/features/data/DataContext";
 //import ManageServices from "@/components/admin/ManageServices";
 //import ManageProducts from "@/components/admin/ManageProducts";

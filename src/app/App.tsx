@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/shared/components/ui/sonner";
-import { Toaster } from "@/shared/components/ui/toaster";
-import { TooltipProvider } from "@/shared/components/ui/tooltip";
+import { Toaster as Sonner } from "@/shared/ui/sonner";
+import { Toaster } from "@/shared/ui/toaster";
+import { TooltipProvider } from "@/shared/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Services from "./pages/Services.tsx";
 import ServiceDetail from "./pages/ServiceDetail.tsx";
@@ -12,7 +12,7 @@ import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminLogin from "./features/auth/components/AdminLogin.tsx";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
-import { ProtectedRoute } from "@/routes/ProtectedRoute";
+import { ProtectedRoute } from "@/app/router/ProtectedRoute";
 
 
 const queryClient = new QueryClient();

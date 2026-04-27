@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { Card } from "@/shared/components/ui/card";
+import { Card } from "@/shared/ui/card";
 import Navbar from "@/shared/components/Navbar";
 
 const products = [

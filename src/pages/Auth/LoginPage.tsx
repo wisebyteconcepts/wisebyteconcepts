@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 
-import { Button } from "@/shared/components/ui/button";
-import { Input } from "@/shared/components/ui/input";
-import { Label } from "@/shared/components/ui/label";
-import { Card } from "@/shared/components/ui/card";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { Label } from "@/shared/ui/label";
+import { Card } from "@/shared/ui/card";
 
 import { useLogin } from "@/features/auth/hooks/useLogin";
-import { useAuth } from "@/core/providers/AuthProvider";
+import { useAuth } from "@/app/providers/AuthProvider";
 
 import { toast } from "sonner";
 import logo from "@/assets/wbc-logo.png";

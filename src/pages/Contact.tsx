@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Mail, Github, Linkedin, Twitter, Phone, MapPin } from "lucide-react";
-import { Button } from "@/shared/components/ui/button";
-import { Card } from "@/shared/components/ui/card";
-import { Input } from "@/shared/components/ui/input";
-import { Textarea } from "@/shared/components/ui/textarea";
-import { Label } from "@/shared/components/ui/label";
+import { Button } from "@/shared/ui/button";
+import { Card } from "@/shared/ui/card";
+import { Input } from "@/shared/ui/input";
+import { Textarea } from "@/shared/ui/textarea";
+import { Label } from "@/shared/ui/label";
 import Navbar from "@/shared/components/Navbar";
 
 const Contact = () => {
