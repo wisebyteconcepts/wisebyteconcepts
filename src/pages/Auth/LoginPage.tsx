@@ -1,7 +1,8 @@
+// src/pages/Auth/LoginPage.tsx
+
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
-import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
@@ -9,111 +10,137 @@ import { Label } from "@/shared/ui/label";
 import { Card } from "@/shared/ui/card";
 
 import { useAuth } from "@/app/providers/AuthProvider";
-import { useLogin } from "@/features/auth/hooks/useLogin";
-
-import logo from "@/assets/wbc-logo.png";
+import type { AuthUser } from "@/features/auth/types/auth.types";
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const { user, loading } = useAuth();
-    const loginMutation = useLogin();
+
+    // ✅ Hooks MUST be here (top level)
+    const { user, isLoading, login } = useAuth();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
 
-    const from = (location.state as { from?: { pathname: string } } | null)?.from?.pathname ?? "/dashboard";
+    const [error, setError] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
+    // ✅ Redirect if already logged in
     useEffect(() => {
-        if (!loading && user) {
-            navigate(from, { replace: true });
+        if (!isLoading && user) {
+            navigate("/dashboard", { replace: true });
         }
-    }, [user, loading, navigate, from]);
+    }, [user, isLoading, navigate]);
 
-    useEffect(() => {
-        document.title = "Admin Login — Wise Byte Concepts";
-    }, []);
-
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        loginMutation.mutate(
-            { email, password },
-            {
-                onSuccess: () => {
-                    toast.success("Welcome back");
-                    navigate(from, { replace: true });
-                },
-                onError: (error: Error) => {
-                    toast.error(error.message || "Invalid credentials");
-                },
-            },
-        );
+        setError(null);
+
+        if (!email || !password) {
+            setError("Email and password are required.");
+            return;
+        }
+
+        try {
+            setIsSubmitting(true);
+
+            // 🔁 Simulate API
+            await new Promise((r) => setTimeout(r, 800));
+
+            // ⚠️ Mock validation
+            if (email !== "admin@test.com" || password !== "123456") {
+                throw new Error("Invalid credentials");
+            }
+
+            const userData: AuthUser = {
+                id: "1",
+                email,
+                roles: ["admin"],
+            };
+
+            // 🔥 Critical: update context (NOT localStorage directly)
+            await login(userData);
+
+            // 🔥 Navigate after state update
+            navigate("/dashboard", { replace: true });
+
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError("Login failed");
+            }
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
-    if (loading) return null;
-
     return (
-        <div className="flex min-h-screen items-center justify-center bg-muted/40 px-4">
-            <Card className="w-full max-w-md space-y-6 p-8 shadow-lg">
-                <div className="flex flex-col items-center gap-3 text-center">
-                    <img src={logo} alt="Wise Byte Concepts" className="h-12 w-12 rounded-lg" />
-                    <div>
-                        <h1 className="text-2xl font-semibold">Admin Login</h1>
-                        <p className="text-sm text-muted-foreground">
-                            Sign in to manage your services and products
-                        </p>
-                    </div>
+        <div className="flex min-h-screen items-center justify-center bg-muted/30 px-4">
+            <Card className="w-full max-w-md p-6">
+                <div className="mb-6 text-center">
+                    <h2 className="text-2xl font-bold">Admin Login</h2>
+                    <p className="text-sm text-muted-foreground">
+                        Sign in to access dashboard
+                    </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleLogin} className="space-y-4">
+                    {/* Email */}
                     <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
                         <Input
                             id="email"
                             type="email"
-                            placeholder="you@example.com"
+                            placeholder="admin@test.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            autoComplete="email"
-                            required
                         />
                     </div>
 
+                    {/* Password */}
                     <div className="space-y-2">
                         <Label htmlFor="password">Password</Label>
                         <div className="relative">
                             <Input
                                 id="password"
                                 type={showPassword ? "text" : "password"}
-                                placeholder="••••••••"
+                                placeholder="••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                autoComplete="current-password"
-                                required
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowPassword((prev) => !prev)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                                aria-label={showPassword ? "Hide password" : "Show password"}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground"
                             >
-                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                {showPassword ? (
+                                    <EyeOff className="h-4 w-4" />
+                                ) : (
+                                    <Eye className="h-4 w-4" />
+                                )}
                             </button>
                         </div>
                     </div>
 
-                    <Button type="submit" className="w-full" disabled={loginMutation.isPending}>
-                        {loginMutation.isPending ? (
-                            <>
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Signing in…
-                            </>
-                        ) : (
-                            "Sign in"
-                        )}
+                    {/* Error */}
+                    {error && (
+                        <p className="text-sm text-destructive">{error}</p>
+                    )}
+
+                    {/* Submit */}
+                    <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "Signing in..." : "Sign in"}
                     </Button>
                 </form>
+
+                <div className="mt-4 text-center text-xs text-muted-foreground">
+                    Demo: admin@test.com / 123456
+                </div>
             </Card>
         </div>
     );

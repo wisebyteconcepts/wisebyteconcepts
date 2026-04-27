@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\core",
+    "\\src\\core\\hooks",
     "\\src\\features",
     "\\src\\features\\auth",
+    "\\src\\features\\auth\\api",
     "\\src\\features\\auth\\hooks",
-    "\\src\\features\\auth\\services",
-    "\\src\\features\\data",
     "\\src\\shared",
-    "\\src\\shared\\components"
+    "\\src\\test"
   ],
-  "SelectedNode": "\\src\\features\\data\\data.types.ts",
+  "SelectedNode": "\\src\\app\\providers\\AuthProvider.tsx",
   "PreviewInSolutionExplorer": false
 }

@@ -1,30 +1,30 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "@/app/providers/AuthProvider";
 
-interface ProtectedRouteProps {
+export const ProtectedRoute = ({
+    children,
+    requireAdmin = false,
+}: {
     children: React.ReactNode;
     requireAdmin?: boolean;
-}
+}) => {
+    const { user, roles, isLoading } = useAuth();
 
-export const ProtectedRoute = ({ children, requireAdmin = false }: ProtectedRouteProps) => {
-    const { user, isAdmin, loading } = useAuth();
-    const location = useLocation();
-
-    if (loading) {
-        return (
-            <div className="flex min-h-screen items-center justify-center">
-                <div className="text-muted-foreground">Loading…</div>
-            </div>
-        );
+    // 1. Wait for auth to resolve
+    if (isLoading) {
+        return <div>Loading...</div>; // or skeleton
     }
 
+    // 2. Not logged in
     if (!user) {
-        return <Navigate to="/login" state={{ from: location }} replace />;
+        return <Navigate to="/login" replace />;
     }
 
-    if (requireAdmin && !isAdmin) {
-        return <Navigate to="/" replace />;
+    // 3. Admin check
+    if (requireAdmin && !roles?.includes("admin")) {
+        return <Navigate to="/" replace />; // or unauthorized page
     }
 
+    // 4. Render content
     return <>{children}</>;
 };

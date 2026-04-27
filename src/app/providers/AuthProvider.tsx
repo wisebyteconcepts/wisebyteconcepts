@@ -1,84 +1,60 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import type { Session, User } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
+import type { AuthContextValue, AuthUser } from "@/features/auth/types/auth.types";
 
-type AppRole = "admin" | "moderator" | "user";
-
-interface AuthContextValue {
-    user: User | null;
-    session: Session | null;
-    roles: AppRole[];
-    isAdmin: boolean;
-    loading: boolean;
-    signOut: () => Promise<void>;
-}
-
-const AuthContext = createContext<AuthContextValue>({
-    user: null,
-    session: null,
-    roles: [],
-    isAdmin: false,
-    loading: true,
-    signOut: async () => {},
-});
+const AuthContext = createContext<AuthContextValue | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const [session, setSession] = useState<Session | null>(null);
-    const [user, setUser] = useState<User | null>(null);
-    const [roles, setRoles] = useState<AppRole[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    const fetchRoles = async (userId: string) => {
-        const { data, error } = await supabase
-            .from("user_roles")
-            .select("role")
-            .eq("user_id", userId);
-        if (error) {
-            console.error("Failed to fetch roles:", error.message);
-            setRoles([]);
-            return;
-        }
-        setRoles((data ?? []).map((r) => r.role as AppRole));
-    };
+    const [user, setUser] = useState<AuthUser | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // Set up listener FIRST
-        const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
-            setSession(newSession);
-            setUser(newSession?.user ?? null);
-            if (!newSession?.user) {
-                setRoles([]);
-            } else {
-                // Defer role fetch to avoid deadlock inside auth callback
-                setTimeout(() => fetchRoles(newSession.user.id), 0);
-            }
-            setLoading(false);
-        });
+        const initAuth = async () => {
+            try {
+                const stored = localStorage.getItem("user");
 
-        // THEN check existing session
-        supabase.auth.getSession().then(({ data: { session: existingSession } }) => {
-            setSession(existingSession);
-            setUser(existingSession?.user ?? null);
-            if (existingSession?.user) {
-                fetchRoles(existingSession.user.id);
+                if (stored) {
+                    const parsed: AuthUser = JSON.parse(stored);
+                    setUser(parsed);
+                }
+            } catch (err) {
+                console.error("Auth init failed:", err);
+            } finally {
+                setIsLoading(false);
             }
-            setLoading(false);
-        });
+        };
 
-        return () => listener.subscription.unsubscribe();
+        initAuth();
     }, []);
 
+    // ✅ Derived roles (no duplicate state)
+    const roles = user?.roles ?? [];
+
+    // ✅ Implement signOut properly
     const signOut = async () => {
-        await supabase.auth.signOut();
+        try {
+            localStorage.removeItem("user");
+        } catch (err) {
+            console.error("Sign out failed:", err);
+        } finally {
+            // 🔥 Critical: clear state immediately
+            setUser(null);
+        }
     };
 
-    const isAdmin = roles.includes("admin");
+    const login = async (userData: AuthUser) => {
+        localStorage.setItem("user", JSON.stringify(userData));
+        setUser(userData); // 🔥 THIS is what you're missing
+    };
 
     return (
-        <AuthContext.Provider value={{ user, session, roles, isAdmin, loading, signOut }}>
+        <AuthContext.Provider value={{ user, roles, isLoading, signOut, login }}>
             {children}
         </AuthContext.Provider>
     );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = (): AuthContextValue => {
+    const ctx = useContext(AuthContext);
+    if (!ctx) throw new Error("useAuth must be used within AuthProvider");
+    return ctx;
+};
