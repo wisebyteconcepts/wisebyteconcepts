@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { logout } from "../services/auth.service";
+import { logout } from "../api/auth.api";
 
 export const useLogout = () => {
     return useMutation({
