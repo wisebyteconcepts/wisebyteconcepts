@@ -32,6 +32,7 @@ const emptyService = (): Service => ({
     description: "",
     fullDescription: "",
     screenshot: null,
+    color: "from-blue-500/20 to-cyan-500/20",
     features: [],
     process: [],
 });
@@ -181,6 +182,34 @@ const ServicesAdminPage = () => {
                                 }
                                 placeholder="https://..."
                             />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>Gradient Color</Label>
+                            <div className="grid grid-cols-3 gap-2">
+                                {[
+                                    { label: "Purple → Pink", value: "from-purple-500/20 to-pink-500/20" },
+                                    { label: "Blue → Cyan", value: "from-blue-500/20 to-cyan-500/20" },
+                                    { label: "Emerald → Teal", value: "from-emerald-500/20 to-teal-500/20" },
+                                    { label: "Orange → Red", value: "from-orange-500/20 to-red-500/20" },
+                                    { label: "Indigo → Blue", value: "from-indigo-500/20 to-blue-500/20" },
+                                    { label: "Violet → Purple", value: "from-violet-500/20 to-purple-500/20" },
+                                ].map((option) => (
+                                    <button
+                                        key={option.value}
+                                        type="button"
+                                        onClick={() => setForm({ ...form, color: option.value })}
+                                        className={`p-3 rounded-lg border-2 transition-all text-sm font-medium flex items-center justify-center gap-2 h-20 ${
+                                            form.color === option.value
+                                                ? "border-blue-600 dark:border-blue-400 bg-blue-50 dark:bg-blue-950/30"
+                                                : "border-border hover:border-blue-400"
+                                        }`}
+                                    >
+                                        <div className={`w-6 h-6 rounded bg-gradient-to-br ${option.value}`}></div>
+                                        <span className="text-xs">{option.label}</span>
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         <ListInput

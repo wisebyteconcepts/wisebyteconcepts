@@ -1,14 +1,13 @@
 // src/features/data/data.types.ts
 
-import { LucideIcon } from "lucide-react";
-
 export interface Service {
     id: string;
-    icon?: LucideIcon;
+    iconName?: string; // e.g., "Palette", "Layout", "PenTool", "Smartphone"
     title: string;
     description: string;
     fullDescription: string;
     screenshot: string | null;
+    color: string; // gradient like "from-purple-500/20 to-pink-500/20"
     features: string[];
     process: string[];
 }

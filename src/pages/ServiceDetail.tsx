@@ -1,112 +1,17 @@
 import { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Palette, Layout, PenTool, Smartphone, Check } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { Card } from "@/shared/ui/card";
 import Navbar from "@/shared/components/Navbar";
-
-const serviceDetails: Record<string, any> = {
-  "graphic-design": {
-    icon: Palette,
-    title: "Graphic Design",
-    description: "Brand identities, marketing collateral, and visuals with a polished, modern edge.",
-    fullDescription:
-      "Our graphic design services help you establish a strong visual identity that sets you apart from the competition. We work with you to understand your brand values and translate them into compelling visual designs.",
-    screenshot: null,
-    features: [
-      "Logo Design & Brand Identity",
-      "Marketing Collateral (Brochures, Business Cards)",
-      "Social Media Design",
-      "Package & Label Design",
-      "Illustration & Custom Graphics",
-      "Brand Guidelines Development",
-    ],
-    process: [
-      "Discovery & Brand Briefing",
-      "Concept Development",
-      "Design Iterations",
-      "Client Feedback & Refinement",
-      "Final Delivery & Asset Optimization",
-    ],
-  },
-  "web-design": {
-    icon: Layout,
-    title: "Web Design",
-    description: "Responsive, conversion-focused websites that look sharp on every device.",
-    fullDescription:
-      "We design beautiful, responsive websites that not only look amazing but also convert visitors into customers. Every design decision is made with user experience and business goals in mind.",
-    screenshot: null,
-    features: [
-      "Responsive Web Design",
-      "E-commerce Design",
-      "Landing Page Design",
-      "CMS Integration",
-      "Performance Optimization",
-      "SEO-Friendly Structure",
-    ],
-    process: [
-      "Strategy & Research",
-      "Wireframing",
-      "Visual Design",
-      "Prototyping",
-      "Development Handoff",
-      "Launch & Optimization",
-    ],
-  },
-  "ui-ux-development": {
-    icon: PenTool,
-    title: "UI/UX Development",
-    description: "Thoughtful interfaces and user flows backed by clean, production-ready code.",
-    fullDescription:
-      "We create intuitive user interfaces combined with seamless user experiences, backed by clean, scalable code. Our approach ensures your product is both beautiful and functional.",
-    screenshot: null,
-    features: [
-      "User Research & Testing",
-      "Wireframing & Prototyping",
-      "UI Component Design",
-      "Interaction Design",
-      "Usability Testing",
-      "Design System Creation",
-    ],
-    process: [
-      "User Research",
-      "Persona Development",
-      "Journey Mapping",
-      "Wireframe Creation",
-      "Visual Design",
-      "Interactive Prototyping",
-    ],
-  },
-  "desktop-mobile-apps": {
-    icon: Smartphone,
-    title: "Desktop & Mobile Apps",
-    description: "Cross-platform apps engineered for performance, reliability, and scale.",
-    fullDescription:
-      "We build powerful applications for desktop and mobile platforms that are engineered for performance, reliability, and scalability. From native apps to cross-platform solutions, we have the expertise.",
-    screenshot: null,
-    features: [
-      "iOS & Android Development",
-      "Cross-Platform Apps",
-      "Desktop Applications",
-      "Cloud Integration",
-      "Real-time Features",
-      "App Maintenance & Support",
-    ],
-    process: [
-      "Requirements Gathering",
-      "Architecture Design",
-      "Development Sprint",
-      "Testing & QA",
-      "Deployment",
-      "Post-Launch Support",
-    ],
-  },
-};
+import { useData } from "@/features/data/DataContext";
+import { getServiceIcon } from "@/shared/lib/getServiceIcon";
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
-  const service = serviceDetails[serviceId || ""];
+  const { services } = useData();
+  const service = services.find((s) => s.id === serviceId);
 
   useEffect(() => {
     if (!service) {
@@ -121,7 +26,7 @@ const ServiceDetail = () => {
 
   if (!service) return null;
 
-  const IconComponent = service.icon;
+  const IconComponent = getServiceIcon(service.iconName);
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
@@ -137,9 +42,11 @@ const ServiceDetail = () => {
 
         <div className="mb-12">
           <div className="flex items-start gap-4 mb-6">
-            <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-              <IconComponent className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-            </div>
+            {IconComponent && (
+              <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                <IconComponent className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              </div>
+            )}
             <div>
               <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white">{service.title}</h1>
               <p className="text-xl text-slate-600 dark:text-slate-400 mt-2">{service.description}</p>
@@ -172,7 +79,7 @@ const ServiceDetail = () => {
           <Card className="p-8">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Key Features</h2>
             <ul className="space-y-4">
-              {service.features.map((feature: string, idx: number) => (
+              {service.features.map((feature, idx) => (
                 <li key={idx} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700 dark:text-slate-300">{feature}</span>
@@ -185,7 +92,7 @@ const ServiceDetail = () => {
           <Card className="p-8">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Our Process</h2>
             <ol className="space-y-4">
-              {service.process.map((step: string, idx: number) => (
+              {service.process.map((step, idx) => (
                 <li key={idx} className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-6 h-6 bg-blue-600 dark:bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
                     {idx + 1}

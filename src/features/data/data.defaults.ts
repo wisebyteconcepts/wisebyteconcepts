@@ -1,6 +1,5 @@
 // src/features/data/data.defaults.ts
 
-import { Palette, Layout, PenTool, Smartphone } from "lucide-react";
 import type { Service, Product, Skill } from "./data.types";
 
 export const defaultSkills: Skill[] = [
@@ -16,13 +15,106 @@ export const defaultSkills: Skill[] = [
 export const defaultServices: Service[] = [
     {
         id: "graphic-design",
-        icon: Palette,
+        iconName: "Palette",
         title: "Graphic Design",
-        description: "Brand identities...",
-        fullDescription: "Full description...",
+        description: "Brand identities, marketing collateral, and visuals with a polished, modern edge.",
+        fullDescription:
+            "Our graphic design services help you establish a strong visual identity that sets you apart from the competition. We work with you to understand your brand values and translate them into compelling visual designs.",
         screenshot: null,
-        features: [],
-        process: [],
+        color: "from-purple-500/20 to-pink-500/20",
+        features: [
+            "Logo Design & Brand Identity",
+            "Marketing Collateral (Brochures, Business Cards)",
+            "Social Media Design",
+            "Package & Label Design",
+            "Illustration & Custom Graphics",
+            "Brand Guidelines Development",
+        ],
+        process: [
+            "Discovery & Brand Briefing",
+            "Concept Development",
+            "Design Iterations",
+            "Client Feedback & Refinement",
+            "Final Delivery & Asset Optimization",
+        ],
+    },
+    {
+        id: "web-design",
+        iconName: "Layout",
+        title: "Web Design",
+        description: "Responsive, conversion-focused websites that look sharp on every device.",
+        fullDescription:
+            "We design beautiful, responsive websites that not only look amazing but also convert visitors into customers. Every design decision is made with user experience and business goals in mind.",
+        screenshot: null,
+        color: "from-blue-500/20 to-cyan-500/20",
+        features: [
+            "Responsive Web Design",
+            "E-commerce Design",
+            "Landing Page Design",
+            "CMS Integration",
+            "Performance Optimization",
+            "SEO-Friendly Structure",
+        ],
+        process: [
+            "Strategy & Research",
+            "Wireframing",
+            "Visual Design",
+            "Prototyping",
+            "Development Handoff",
+            "Launch & Optimization",
+        ],
+    },
+    {
+        id: "ui-ux-development",
+        iconName: "PenTool",
+        title: "UI/UX Development",
+        description: "Thoughtful interfaces and user flows backed by clean, production-ready code.",
+        fullDescription:
+            "We create intuitive user interfaces combined with seamless user experiences, backed by clean, scalable code. Our approach ensures your product is both beautiful and functional.",
+        screenshot: null,
+        color: "from-emerald-500/20 to-teal-500/20",
+        features: [
+            "User Research & Testing",
+            "Wireframing & Prototyping",
+            "UI Component Design",
+            "Interaction Design",
+            "Usability Testing",
+            "Design System Creation",
+        ],
+        process: [
+            "User Research",
+            "Persona Development",
+            "Journey Mapping",
+            "Wireframe Creation",
+            "Visual Design",
+            "Interactive Prototyping",
+        ],
+    },
+    {
+        id: "desktop-mobile-apps",
+        iconName: "Smartphone",
+        title: "Desktop & Mobile Apps",
+        description: "Cross-platform apps engineered for performance, reliability, and scale.",
+        fullDescription:
+            "We build powerful applications for desktop and mobile platforms that are engineered for performance, reliability, and scalability. From native apps to cross-platform solutions, we have the expertise.",
+        screenshot: null,
+        color: "from-orange-500/20 to-red-500/20",
+        features: [
+            "iOS & Android Development",
+            "Cross-Platform Apps",
+            "Desktop Applications",
+            "Cloud Integration",
+            "Real-time Features",
+            "App Maintenance & Support",
+        ],
+        process: [
+            "Requirements Gathering",
+            "Architecture Design",
+            "Development Sprint",
+            "Testing & QA",
+            "Deployment",
+            "Maintenance & Support",
+        ],
     },
 ];
 

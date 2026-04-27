@@ -1,25 +1,20 @@
 import { useEffect } from "react";
-import { ArrowRight, Code2, Palette, Layout, Smartphone, Mail, Github, Linkedin, Twitter, Sun, Moon, Image as ImageIcon, FileImage, PenTool, Figma, Terminal, GitBranch, Globe } from "lucide-react";
+import { ArrowRight, Code2, Mail, Github, Linkedin, Twitter, Sun, Moon, Terminal, GitBranch, Globe } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { Card } from "@/shared/ui/card";
 import { Badge } from "@/shared/ui/badge";
 import { Link } from "react-router-dom";
 import Navbar from "@/shared/components/Navbar";
+import { useData } from "@/features/data/DataContext";
+import { getServiceIcon } from "@/shared/lib/getServiceIcon";
 import logo from "@/assets/wbc-logo.png";
 
-const services = [
-  { icon: Palette, title: "Graphic Design", desc: "Brand identities, marketing collateral, and visuals with a polished, modern edge." },
-  { icon: Layout, title: "Web Design", desc: "Responsive, conversion-focused websites that look sharp on every device." },
-  { icon: PenTool, title: "UI/UX Development", desc: "Thoughtful interfaces and user flows backed by clean, production-ready code." },
-  { icon: Smartphone, title: "Desktop & Mobile Apps", desc: "Cross-platform apps engineered for performance, reliability, and scale." },
-];
-
 const skills = [
-  { icon: ImageIcon, name: "Photoshop" },
-  { icon: FileImage, name: "Adobe InDesign" },
-  { icon: PenTool, name: "Adobe Illustrator" },
-  { icon: Figma, name: "Figma" },
+  { icon: Terminal, name: "React" },
+  { icon: GitBranch, name: "TypeScript" },
+  { icon: Code2, name: "Tailwind CSS" },
   { icon: Terminal, name: ".NET" },
+  { icon: Globe, name: "Node.js" },
   { icon: GitBranch, name: "GitHub" },
 ];
 
@@ -39,6 +34,8 @@ const stats = [
 ];
 
 const Index = () => {
+  const { services } = useData();
+
   useEffect(() => {
     document.title = "Wise Byte Concepts — Software Studio for Modern Products";
     const meta = document.querySelector('meta[name="description"]');
@@ -164,16 +161,38 @@ const Index = () => {
             <p className="text-muted-foreground text-lg">From first sketch to production deploy — one team, all the way through.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {services.map((s) => (
-              <Card key={s.title} className="p-6 border-border/50 hover:border-primary/40 hover:shadow-soft transition-all duration-300 bg-background">
-                <div className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center mb-4">
-                  <s.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-              </Card>
-                  ))}
-                </div>
+            {services.map((s) => {
+              const IconComponent = getServiceIcon(s.iconName);
+              return (
+                <Link key={s.id} to={`/services/${s.id}`}>
+                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group border-border/50">
+                    {/* Image/Color Area */}
+                    <div className={`bg-gradient-to-br ${s.color} h-32 flex items-center justify-center relative overflow-hidden`}>
+                      {/* Background pattern effect */}
+                      <div className="absolute inset-0 opacity-30">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
+                      </div>
+                      
+                      {/* Icon */}
+                      {IconComponent && (
+                        <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
+                          <div className="w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg">
+                            <IconComponent className="w-8 h-8 text-slate-900 dark:text-white" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Content Area */}
+                    <div className="flex flex-col flex-1 p-4">
+                      <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{s.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">{s.description}</p>
+                    </div>
+                  </Card>
+                </Link>
+              );
+            })}
+          </div>
                 <div className="flex justify-center mt-8">
                   <Button asChild size="lg" variant="outline">
                     <Link to="/services">View all services <ArrowRight className="ml-2 h-4 w-4" /></Link>

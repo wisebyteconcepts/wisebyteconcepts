@@ -1,42 +1,15 @@
 import { useEffect } from "react";
-import { Palette, Layout, PenTool, Smartphone, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui/button";
 import { Card } from "@/shared/ui/card";
 import Navbar from "@/shared/components/Navbar";
-
-const services = [
-  {
-    id: "graphic-design",
-    icon: Palette,
-    title: "Graphic Design",
-    desc: "Brand identities, marketing collateral, and visuals with a polished, modern edge.",
-    details: "We create stunning visual designs that capture your brand's essence and resonate with your audience.",
-  },
-  {
-    id: "web-design",
-    icon: Layout,
-    title: "Web Design",
-    desc: "Responsive, conversion-focused websites that look sharp on every device.",
-    details: "Our web design expertise ensures your site is not only beautiful but also functional and user-centric.",
-  },
-  {
-    id: "ui-ux-development",
-    icon: PenTool,
-    title: "UI/UX Development",
-    desc: "Thoughtful interfaces and user flows backed by clean, production-ready code.",
-    details: "We design intuitive user experiences paired with robust code to deliver exceptional digital products.",
-  },
-  {
-    id: "desktop-mobile-apps",
-    icon: Smartphone,
-    title: "Desktop & Mobile Apps",
-    desc: "Cross-platform apps engineered for performance, reliability, and scale.",
-    details: "From concept to deployment, we build applications that work seamlessly across all platforms.",
-  },
-];
+import { useData } from "@/features/data/DataContext";
+import { getServiceIcon } from "@/shared/lib/getServiceIcon";
 
 const Services = () => {
+  const { services } = useData();
+
   useEffect(() => {
     document.title = "Services — Wise Byte Concepts";
     const meta = document.querySelector('meta[name="description"]');
@@ -59,23 +32,43 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {services.map((service) => {
-            const IconComponent = service.icon;
+            const IconComponent = getServiceIcon(service.iconName);
             return (
               <Link key={service.id} to={`/services/${service.id}`}>
-                <Card className="p-6 hover:shadow-lg transition-all cursor-pointer h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                      <IconComponent className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer h-full flex flex-col group border-border/50">
+                  {/* Image/Color Area */}
+                  <div className={`bg-gradient-to-br ${service.color} h-40 flex items-center justify-center relative overflow-hidden`}>
+                    {/* Background pattern effect */}
+                    <div className="absolute inset-0 opacity-30">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.2),transparent_50%)]"></div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">{service.title}</h3>
-                    </div>
+                    
+                    {/* Icon */}
+                    {IconComponent && (
+                      <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-20 h-20 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg">
+                          <IconComponent className="w-10 h-10 text-slate-900 dark:text-white" />
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <p className="text-slate-600 dark:text-slate-400 mb-4">{service.desc}</p>
-                  <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium">
-                    Learn more <ArrowRight className="w-4 h-4" />
+
+                  {/* Content Area */}
+                  <div className="flex flex-col flex-1 p-6">
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 flex-1 mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+                    
+                    {/* CTA */}
+                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-3 transition-all">
+                      Learn more <ArrowRight className="w-4 h-4" />
+                    </div>
                   </div>
                 </Card>
               </Link>
