@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { ArrowRight, Code2, Palette, Layout, Smartphone, Mail, Github, Linkedin, Twitter, Sun, Moon, Image as ImageIcon, FileImage, PenTool, Figma, Terminal, GitBranch, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/shared/components/ui/button";
+import { Card } from "@/shared/components/ui/card";
+import { Badge } from "@/shared/components/ui/badge";
 import { Link } from "react-router-dom";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/shared/components/Navbar";
 import logo from "@/assets/wbc-logo.png";
 
 const services = [

@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Palette, Layout, PenTool, Smartphone } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 export interface Service {
   id: string;
-  icon: any;
+  icon: LucideIcon;
   title: string;
   description: string;
   fullDescription: string;

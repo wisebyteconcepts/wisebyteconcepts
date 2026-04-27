@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Palette, Layout, PenTool, Smartphone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
+import { Button } from "@/shared/components/ui/button";
+import { Card } from "@/shared/components/ui/card";
+import Navbar from "@/shared/components/Navbar";
 
 const services = [
   {

@@ -3,40 +3,44 @@
   "WorkspaceRootPath": "E:\\Projects\\wisebyteconcepts\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\NotFound.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\NotFound.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\features\\data\\data.defaults.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\features\\data\\data.defaults.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\App.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\AdminLogin.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\AdminLogin.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\features\\data\\data.types.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\features\\data\\data.types.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\AdminDashboard.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\AdminDashboard.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\context\\AdminContext.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\context\\AdminContext.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\features\\data\\DataContext.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\features\\data\\DataContext.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\contexts\\DataContext.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\contexts\\DataContext.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\Contact.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Contact.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\App.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\contexts\\AuthContext.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\contexts\\AuthContext.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\features\\auth\\components\\AdminLogin.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\features\\auth\\components\\AdminLogin.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\Products.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Products.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\features\\auth\\components\\LoginForm.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\features\\auth\\components\\LoginForm.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\Services.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Services.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\Index.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Index.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\ProductDetail.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -47,20 +51,12 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\ServiceDetail.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\Services.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Services.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\shared\\components\\ui\\toaster.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\shared\\components\\ui\\toaster.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\components\\Navbar.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\Navbar.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\Index.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Index.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\types\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\types\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\wisebyteconcepts\\src\\pages\\Products.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Products.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,19 +66,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 376,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NotFound.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\NotFound.tsx",
-              "RelativeDocumentMoniker": "src\\pages\\NotFound.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\NotFound.tsx",
-              "RelativeToolTip": "src\\pages\\NotFound.tsx",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "data.types.ts",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\features\\data\\data.types.ts",
+              "RelativeDocumentMoniker": "src\\features\\data\\data.types.ts",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\features\\data\\data.types.ts",
+              "RelativeToolTip": "src\\features\\data\\data.types.ts",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwBcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T15:11:31.275Z",
+              "WhenOpened": "2026-04-26T17:56:50.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "data.defaults.ts",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\features\\data\\data.defaults.ts",
+              "RelativeDocumentMoniker": "src\\features\\data\\data.defaults.ts",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\features\\data\\data.defaults.ts",
+              "RelativeToolTip": "src\\features\\data\\data.defaults.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:56:27.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DataContext.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\features\\data\\DataContext.tsx",
+              "RelativeDocumentMoniker": "src\\features\\data\\DataContext.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\features\\data\\DataContext.tsx",
+              "RelativeToolTip": "src\\features\\data\\DataContext.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:55:39.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DataContext.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\contexts\\DataContext.tsx",
+              "RelativeDocumentMoniker": "src\\contexts\\DataContext.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\contexts\\DataContext.tsx",
+              "RelativeToolTip": "src\\contexts\\DataContext.tsx",
+              "ViewState": "AgIAAHEBAAAAAAAAAAAAwIIBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:51:52.654Z",
               "EditorCaption": ""
             },
             {
@@ -107,184 +142,132 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminContext.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\context\\AdminContext.tsx",
-              "RelativeDocumentMoniker": "src\\context\\AdminContext.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\context\\AdminContext.tsx",
-              "RelativeToolTip": "src\\context\\AdminContext.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:51:00.038Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminDashboard.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\AdminDashboard.tsx",
-              "RelativeDocumentMoniker": "src\\pages\\AdminDashboard.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\AdminDashboard.tsx",
-              "RelativeToolTip": "src\\pages\\AdminDashboard.tsx",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAywCoAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:49:57.523Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminLogin.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\AdminLogin.tsx",
-              "RelativeDocumentMoniker": "src\\pages\\AdminLogin.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\AdminLogin.tsx",
-              "RelativeToolTip": "src\\pages\\AdminLogin.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:49:25.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "DataContext.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\contexts\\DataContext.tsx",
-              "RelativeDocumentMoniker": "src\\contexts\\DataContext.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\contexts\\DataContext.tsx",
-              "RelativeToolTip": "src\\contexts\\DataContext.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:49:11.97Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AuthContext.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\contexts\\AuthContext.tsx",
-              "RelativeDocumentMoniker": "src\\contexts\\AuthContext.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\contexts\\AuthContext.tsx",
-              "RelativeToolTip": "src\\contexts\\AuthContext.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:48:45.376Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Contact.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Contact.tsx",
-              "RelativeDocumentMoniker": "src\\pages\\Contact.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Contact.tsx",
-              "RelativeToolTip": "src\\pages\\Contact.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:41:37.251Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Navbar.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\components\\Navbar.tsx",
-              "RelativeDocumentMoniker": "src\\components\\Navbar.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\components\\Navbar.tsx",
-              "RelativeToolTip": "src\\components\\Navbar.tsx",
-              "ViewState": "AgIAADoAAAAAAAAAAIBMwEQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:34:13.961Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProductDetail.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\ProductDetail.tsx",
-              "RelativeDocumentMoniker": "src\\pages\\ProductDetail.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\ProductDetail.tsx",
-              "RelativeToolTip": "src\\pages\\ProductDetail.tsx",
-              "ViewState": "AgIAALcAAAAAAAAAAAAMwBYBAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:31:19.296Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Products.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Products.tsx",
-              "RelativeDocumentMoniker": "src\\pages\\Products.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Products.tsx",
-              "RelativeToolTip": "src\\pages\\Products.tsx",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFQAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:31:13.267Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "App.tsx",
               "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\App.tsx",
               "RelativeDocumentMoniker": "src\\App.tsx",
               "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\App.tsx",
               "RelativeToolTip": "src\\App.tsx",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACEAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:31:25.906Z",
+              "WhenOpened": "2026-04-26T17:19:57.021Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Index.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Index.tsx",
-              "RelativeDocumentMoniker": "src\\pages\\Index.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Index.tsx",
-              "RelativeToolTip": "src\\pages\\Index.tsx",
-              "ViewState": "AgIAACcAAAAAAAAAAIBMwAEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AdminDashboard.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\AdminDashboard.tsx",
+              "RelativeDocumentMoniker": "src\\pages\\AdminDashboard.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\AdminDashboard.tsx",
+              "RelativeToolTip": "src\\pages\\AdminDashboard.tsx",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAUwA8AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:34:18.598Z",
+              "WhenOpened": "2026-04-26T17:24:46.215Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "index.ts",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\types\\index.ts",
-              "RelativeDocumentMoniker": "src\\types\\index.ts",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\types\\index.ts",
-              "RelativeToolTip": "src\\types\\index.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:54:18.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ServiceDetail.tsx",
-              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\ServiceDetail.tsx",
-              "RelativeDocumentMoniker": "src\\pages\\ServiceDetail.tsx",
-              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\ServiceDetail.tsx",
-              "RelativeToolTip": "src\\pages\\ServiceDetail.tsx",
-              "ViewState": "AgIAAJsAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:30:14.247Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 8,
               "Title": "Services.tsx",
               "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Services.tsx",
               "RelativeDocumentMoniker": "src\\pages\\Services.tsx",
               "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Services.tsx",
               "RelativeToolTip": "src\\pages\\Services.tsx",
-              "ViewState": "AgIAACsAAAAAAAAAAAArwGIAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-26T14:29:57.979Z",
+              "WhenOpened": "2026-04-26T17:24:33.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProductDetail.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\ProductDetail.tsx",
+              "RelativeDocumentMoniker": "src\\pages\\ProductDetail.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\ProductDetail.tsx",
+              "RelativeToolTip": "src\\pages\\ProductDetail.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:24:15.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Index.tsx",
+              "RelativeDocumentMoniker": "src\\pages\\Index.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Index.tsx",
+              "RelativeToolTip": "src\\pages\\Index.tsx",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:22:57.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdminLogin.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\features\\auth\\components\\AdminLogin.tsx",
+              "RelativeDocumentMoniker": "src\\features\\auth\\components\\AdminLogin.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\features\\auth\\components\\AdminLogin.tsx",
+              "RelativeToolTip": "src\\features\\auth\\components\\AdminLogin.tsx",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAwGEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:19:23.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ServiceDetail.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\ServiceDetail.tsx",
+              "RelativeDocumentMoniker": "src\\pages\\ServiceDetail.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\ServiceDetail.tsx",
+              "RelativeToolTip": "src\\pages\\ServiceDetail.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:24:03.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginForm.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\features\\auth\\components\\LoginForm.tsx",
+              "RelativeDocumentMoniker": "src\\features\\auth\\components\\LoginForm.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\features\\auth\\components\\LoginForm.tsx",
+              "RelativeToolTip": "src\\features\\auth\\components\\LoginForm.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:19:31.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "toaster.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\shared\\components\\ui\\toaster.tsx",
+              "RelativeDocumentMoniker": "src\\shared\\components\\ui\\toaster.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\shared\\components\\ui\\toaster.tsx",
+              "RelativeToolTip": "src\\shared\\components\\ui\\toaster.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:23:50.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Products.tsx",
+              "DocumentMoniker": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Products.tsx",
+              "RelativeDocumentMoniker": "src\\pages\\Products.tsx",
+              "ToolTip": "E:\\Projects\\wisebyteconcepts\\src\\pages\\Products.tsx",
+              "RelativeToolTip": "src\\pages\\Products.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-04-26T17:22:18.623Z",
               "EditorCaption": ""
             }
           ]

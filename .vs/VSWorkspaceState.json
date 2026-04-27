@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\features",
+    "\\src\\features\\auth",
+    "\\src\\features\\auth\\hooks",
+    "\\src\\features\\auth\\services",
+    "\\src\\features\\data",
+    "\\src\\shared",
+    "\\src\\shared\\components"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\features\\data\\data.types.ts",
   "PreviewInSolutionExplorer": false
 }

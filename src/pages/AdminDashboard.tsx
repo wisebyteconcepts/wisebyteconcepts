@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut, Plus, Settings } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/shared/components/ui/button";
+import { Card } from "@/shared/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import { useAuth } from "@/contexts/AuthContext";
-import { useData } from "@/contexts/DataContext";
+import { useData } from "@/features/data/DataContext";
 //import ManageServices from "@/components/admin/ManageServices";
 //import ManageProducts from "@/components/admin/ManageProducts";
 import logo from "@/assets/wbc-logo.png";
@@ -18,7 +18,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/admin/login");
+    navigate("/login");
   };
 
   const handleReset = () => {       
