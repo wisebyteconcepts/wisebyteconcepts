@@ -23,6 +23,8 @@ import {
     TableRow,
 } from "@/shared/ui/table";
 import { CrudPageShell } from "./_shared/CrudPageShell";
+import { IconPicker } from "./_shared/IconPicker";
+import { LucideIcon } from "@/shared/components/LucideIcon";
 
 const emptySkill = (): Skill => ({
     id: "",
@@ -95,6 +97,7 @@ const SkillsAdminPage = () => {
                 <Table>
                     <TableHeader>
                         <TableRow>
+                            <TableHead className="w-[60px]">Icon</TableHead>
                             <TableHead>Name</TableHead>
                             <TableHead className="hidden sm:table-cell">Category</TableHead>
                             <TableHead className="w-[200px]">Level</TableHead>
@@ -104,13 +107,22 @@ const SkillsAdminPage = () => {
                     <TableBody>
                         {skills.length === 0 && (
                             <TableRow>
-                                <TableCell colSpan={4} className="py-10 text-center text-sm text-muted-foreground">
+                                <TableCell colSpan={5} className="py-10 text-center text-sm text-muted-foreground">
                                     No skills yet.
                                 </TableCell>
                             </TableRow>
                         )}
                         {skills.map((s) => (
                             <TableRow key={s.id}>
+                                <TableCell>
+                                    {s.icon ? (
+                                        <div className="flex h-8 w-8 items-center justify-center rounded-md bg-accent">
+                                            <LucideIcon name={s.icon} className="h-4 w-4 text-primary" />
+                                        </div>
+                                    ) : (
+                                        <span className="text-xs text-muted-foreground">—</span>
+                                    )}
+                                </TableCell>
                                 <TableCell className="font-medium">{s.name}</TableCell>
                                 <TableCell className="hidden text-muted-foreground sm:table-cell">
                                     {s.category}
@@ -168,6 +180,11 @@ const SkillsAdminPage = () => {
                                 placeholder="Frontend, Backend, Design..."
                             />
                         </div>
+
+                        <IconPicker
+                            value={form.icon ?? null}
+                            onChange={(icon) => setForm({ ...form, icon })}
+                        />
 
                         <div className="space-y-2">
                             <Label>Level ({form.level}%)</Label>
