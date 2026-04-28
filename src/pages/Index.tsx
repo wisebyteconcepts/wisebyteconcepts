@@ -7,16 +7,8 @@ import { Link } from "react-router-dom";
 import Navbar from "@/shared/components/Navbar";
 import { useData } from "@/features/data/DataContext";
 import { getServiceIcon } from "@/shared/lib/getServiceIcon";
+import { LucideIcon as DynLucideIcon } from "@/shared/components/LucideIcon";
 import logo from "@/assets/wbc-logo.png";
-
-const skills = [
-  { icon: Terminal, name: "React" },
-  { icon: GitBranch, name: "TypeScript" },
-  { icon: Code2, name: "Tailwind CSS" },
-  { icon: Terminal, name: ".NET" },
-  { icon: Globe, name: "Node.js" },
-  { icon: GitBranch, name: "GitHub" },
-];
 
 const projects = [
   { tag: "Web", title: "Statoniq", desc: "Corporate website build & design.", url: "https://statoniq.com", color: "from-blue-500/20 to-indigo-500/20" },
@@ -34,7 +26,7 @@ const stats = [
 ];
 
 const Index = () => {
-  const { services } = useData();
+  const { services, skills } = useData();
 
   useEffect(() => {
     document.title = "Wise Byte Concepts — Software Studio for Modern Products";
