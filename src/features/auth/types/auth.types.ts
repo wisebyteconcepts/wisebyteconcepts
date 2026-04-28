@@ -16,3 +16,8 @@ export interface AuthContextValue {
     login: (user: AuthUser) => Promise<void>;
     signOut: () => Promise<void>;
 }
+
+export interface LoginPayload {
+    email: string;
+    password: string;
+}
