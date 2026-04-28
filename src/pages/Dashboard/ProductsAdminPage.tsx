@@ -25,6 +25,8 @@ import {
 } from "@/shared/ui/table";
 import { CrudPageShell } from "./_shared/CrudPageShell";
 import { ListInput } from "./_shared/ListInput";
+import { ImageInput } from "./_shared/ImageInput";
+import { ImagesInput } from "./_shared/ImagesInput";
 
 const emptyProduct = (): Product => ({
     id: "",
@@ -34,6 +36,7 @@ const emptyProduct = (): Product => ({
     url: null,
     color: "from-blue-500/20 to-indigo-500/20",
     screenshot: null,
+    screenshots: [],
     fullDescription: "",
     challenges: [],
     solutions: [],
@@ -194,15 +197,17 @@ const ProductsAdminPage = () => {
                             </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <Label>Screenshot URL (optional)</Label>
-                            <Input
-                                value={form.screenshot ?? ""}
-                                onChange={(e) =>
-                                    setForm({ ...form, screenshot: e.target.value || null })
-                                }
-                            />
-                        </div>
+                        <ImageInput
+                            label="Featured image"
+                            value={form.screenshot}
+                            onChange={(v) => setForm({ ...form, screenshot: v })}
+                        />
+
+                        <ImagesInput
+                            label="Additional screenshots"
+                            value={form.screenshots || []}
+                            onChange={(v) => setForm({ ...form, screenshots: v })}
+                        />
 
                         <div className="space-y-2">
                             <Label>Full description</Label>

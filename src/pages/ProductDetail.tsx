@@ -14,6 +14,7 @@ const productDetails: Record<string, any> = {
     url: "https://statoniq.com",
     color: "from-blue-500/20 to-indigo-500/20",
     screenshot: null,
+    screenshots: [],
     fullDescription:
       "Statoniq is a modern corporate website designed to showcase professional services with a clean, intuitive interface. Built with responsive design principles, it delivers a seamless experience across all devices.",
     challenges: [
@@ -41,6 +42,7 @@ const productDetails: Record<string, any> = {
     url: "https://essence4world.com",
     color: "from-violet-500/20 to-blue-500/20",
     screenshot: null,
+    screenshots: [],
     fullDescription:
       "Essence4World is a comprehensive content platform designed for brand storytelling and audience engagement. It combines beautiful design with powerful content management capabilities.",
     challenges: [
@@ -68,6 +70,7 @@ const productDetails: Record<string, any> = {
     url: "https://valleyhospitalsilchar.com",
     color: "from-blue-600/20 to-cyan-500/20",
     screenshot: null,
+    screenshots: [],
     fullDescription:
       "Valley Hospital Silchar's website is designed with patient experience at its core. It provides easy access to medical services, appointment booking, and health information with HIPAA-compliant security.",
     challenges: [
@@ -96,6 +99,7 @@ const productDetails: Record<string, any> = {
     url: "https://ivorysquares.com",
     color: "from-sky-500/20 to-blue-500/20",
     screenshot: null,
+    screenshots: [],
     fullDescription:
       "Ivory Squares is a real estate platform featuring property listings, virtual tours, and an integrated lead management system. It helps property agents showcase properties effectively and convert leads.",
     challenges: [
@@ -124,6 +128,7 @@ const productDetails: Record<string, any> = {
     url: null,
     color: "from-indigo-500/20 to-blue-500/20",
     screenshot: null,
+    screenshots: [],
     fullDescription:
       "InventoryPro is a powerful desktop application for comprehensive inventory management. It supports multiple locations, real-time tracking, and advanced reporting with an intuitive interface.",
     challenges: [
@@ -207,6 +212,20 @@ const ProductDetail = () => {
                   </div>
                   <p className="text-slate-600 dark:text-slate-400">Screenshot coming soon</p>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Screenshots Gallery Section */}
+          {product.screenshots && product.screenshots.length > 0 && (
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Gallery</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {product.screenshots.map((screenshot: string, idx: number) => (
+                  <div key={idx} className="rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700">
+                    <img src={screenshot} alt={`${product.title} screenshot ${idx + 1}`} className="w-full h-auto object-cover" />
+                  </div>
+                ))}
               </div>
             </div>
           )}

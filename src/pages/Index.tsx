@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { ArrowRight, Code2, Mail, Github, Linkedin, Twitter, Sun, Moon, Terminal, GitBranch, Globe } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { ArrowRight, Code2, Mail, Github, Linkedin, Twitter, Sun, Moon, Terminal, GitBranch, Globe, ExternalLink } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { Card } from "@/shared/ui/card";
 import { Badge } from "@/shared/ui/badge";
@@ -10,14 +10,6 @@ import { getServiceIcon } from "@/shared/lib/getServiceIcon";
 import { LucideIcon as DynLucideIcon } from "@/shared/components/LucideIcon";
 import logo from "@/assets/wbc-logo.png";
 
-const projects = [
-  { tag: "Web", title: "Statoniq", desc: "Corporate website build & design.", url: "https://statoniq.com", color: "from-blue-500/20 to-indigo-500/20" },
-  { tag: "Web", title: "Essence4World", desc: "Brand-driven content platform.", url: "https://essence4world.com", color: "from-violet-500/20 to-blue-500/20" },
-  { tag: "Healthcare", title: "Valley Hospital Silchar", desc: "Hospital website with patient-first UX.", url: "https://valleyhospitalsilchar.com", color: "from-blue-600/20 to-cyan-500/20" },
-  { tag: "Real Estate", title: "Ivory Squares", desc: "Property showcase & lead generation site.", url: "https://ivorysquares.com", color: "from-sky-500/20 to-blue-500/20" },
-  { tag: "Desktop App", title: "InventoryPro", desc: "Desktop inventory management application.", url: null, color: "from-indigo-500/20 to-blue-500/20" },
-];
-
 const stats = [
   { value: "40+", label: "Products shipped" },
   { value: "12", label: "Industries served" },
@@ -26,7 +18,8 @@ const stats = [
 ];
 
 const Index = () => {
-  const { services, skills } = useData();
+  const { services, skills, products } = useData();
+  const skillsCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.title = "Wise Byte Concepts — Software Studio for Modern Products";
@@ -39,6 +32,27 @@ const Index = () => {
       m.content = content;
       document.head.appendChild(m);
     }
+  }, []);
+
+  // Handle horizontal scroll with mouse wheel on skills carousel
+  useEffect(() => {
+    const carousel = skillsCarouselRef.current;
+    if (!carousel) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Only handle horizontal scrolling when over the carousel
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        carousel.scrollLeft += e.deltaX;
+      } else if (e.deltaY !== 0) {
+        e.preventDefault();
+        // Scroll horizontally with vertical wheel movement
+        carousel.scrollLeft += e.deltaY;
+      }
+    };
+
+    carousel.addEventListener("wheel", handleWheel, { passive: false });
+    return () => carousel.removeEventListener("wheel", handleWheel);
   }, []);
 
   return (
@@ -101,39 +115,56 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Products we're proud of.</h2>
           <p className="text-muted-foreground text-lg">A glimpse at recent collaborations across SaaS, AI, fintech, and more.</p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {projects.map((p) => {
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+          {products.map((p) => {
             const CardInner = (
               <>
                 <div className={`aspect-[4/3] bg-gradient-to-br ${p.color} relative overflow-hidden`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
-                      {p.tag === "Desktop App" ? <Terminal className="w-8 h-8 text-primary" /> : <Globe className="w-8 h-8 text-primary" />}
+                  {p.screenshot ? (
+                    <img
+                      src={p.screenshot}
+                      alt={p.title}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
+                        {p.tag === "Desktop App" ? <Terminal className="w-8 h-8 text-primary" /> : <Globe className="w-8 h-8 text-primary" />}
+                      </div>
                     </div>
-                  </div>
+                  )}
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-background/90 text-foreground border-0 backdrop-blur">{p.tag}</Badge>
                   </div>
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors flex items-center gap-2">
-                    {p.title}
-                    {p.url && <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />}
+                    {p.url ? (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:text-primary transition-colors flex items-center gap-2"
+                      >
+                        {p.title}
+                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </a>
+                    ) : (
+                      p.title
+                    )}
                   </h3>
                   <p className="text-sm text-muted-foreground">{p.desc}</p>
                 </div>
               </>
             );
-            return p.url ? (
-              <a key={p.title} href={p.url} target="_blank" rel="noopener noreferrer">
+            return (
+              <Link key={p.id} to={`/products/${p.id}`}>
                 <Card className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant cursor-pointer h-full">
                   {CardInner}
                 </Card>
-              </a>
-            ) : (
-              <Card key={p.title} className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant h-full">
-                {CardInner}
-              </Card>
+              </Link>
             );
            })}
          </div>
@@ -152,14 +183,14 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Services, end to end.</h2>
             <p className="text-muted-foreground text-lg">From first sketch to production deploy — one team, all the way through.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
             {services.map((s) => {
               const IconComponent = getServiceIcon(s.iconName);
               return (
                 <Link key={s.id} to={`/services/${s.id}`}>
                   <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group border-border/50">
                     {/* Image/Color Area */}
-                    <div className={`bg-gradient-to-br ${s.color} h-32 flex items-center justify-center relative overflow-hidden`}>
+                    <div className={`bg-gradient-to-br ${s.color} aspect-video flex items-center justify-center relative overflow-hidden`}>
                       {s.screenshot ? (
                         <img
                           src={s.screenshot}
@@ -185,7 +216,7 @@ const Index = () => {
                     </div>
 
                     {/* Content Area */}
-                    <div className="flex flex-col flex-1 p-4">
+                    <div className="flex flex-col flex-1 p-6">
                       <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{s.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed flex-1">{s.description}</p>
                     </div>
@@ -214,9 +245,8 @@ const Index = () => {
         ) : (
           <div className="relative -mx-4 sm:-mx-6">
             <div
-              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 sm:px-6 pb-4
-                         [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5
-                         [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full"
+              ref={skillsCarouselRef}
+              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 sm:px-6 pb-4 hide-scrollbar"
             >
               {skills.map((s) => (
                 <Card

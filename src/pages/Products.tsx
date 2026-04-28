@@ -1,58 +1,14 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, Globe, Terminal } from "lucide-react";
 import { Card } from "@/shared/ui/card";
+import { Badge } from "@/shared/ui/badge";
+import { useData } from "@/features/data/DataContext";
 import Navbar from "@/shared/components/Navbar";
 
-const products = [
-  {
-    id: "statoniq",
-    tag: "Web",
-    title: "Statoniq",
-    desc: "Corporate website build & design.",
-    color: "from-blue-500/20 to-indigo-500/20",
-    url: "https://statoniq.com",
-    fullDesc: "A comprehensive corporate website showcasing modern design principles and responsive architecture.",
-  },
-  {
-    id: "essence4world",
-    tag: "Web",
-    title: "Essence4World",
-    desc: "Brand-driven content platform.",
-    color: "from-violet-500/20 to-blue-500/20",
-    url: "https://essence4world.com",
-    fullDesc: "A dynamic content platform built with focus on brand identity and user engagement.",
-  },
-  {
-    id: "valley-hospital",
-    tag: "Healthcare",
-    title: "Valley Hospital Silchar",
-    desc: "Hospital website with patient-first UX.",
-    color: "from-blue-600/20 to-cyan-500/20",
-    url: "https://valleyhospitalsilchar.com",
-    fullDesc: "Healthcare website designed with patient experience at the forefront, featuring appointment booking and services.",
-  },
-  {
-    id: "ivory-squares",
-    tag: "Real Estate",
-    title: "Ivory Squares",
-    desc: "Property showcase & lead generation site.",
-    color: "from-sky-500/20 to-blue-500/20",
-    url: "https://ivorysquares.com",
-    fullDesc: "Real estate platform with property listings, virtual tours, and lead management system.",
-  },
-  {
-    id: "inventory-pro",
-    tag: "Desktop App",
-    title: "InventoryPro",
-    desc: "Desktop inventory management application.",
-    color: "from-indigo-500/20 to-blue-500/20",
-    url: null,
-    fullDesc: "Comprehensive desktop application for managing inventory across multiple locations with real-time analytics.",
-  },
-];
-
 const Products = () => {
+  const { products } = useData();
+
   useEffect(() => {
     document.title = "Products — Wise Byte Concepts";
     const meta = document.querySelector('meta[name="description"]');
@@ -75,19 +31,47 @@ const Products = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <Link key={product.id} to={`/products/${product.id}`}>
-              <Card className={`p-6 hover:shadow-lg transition-all cursor-pointer h-full bg-gradient-to-br ${product.color}`}>
-                <div className="mb-4">
-                  <span className="inline-block px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-xs font-semibold rounded-full">
-                    {product.tag}
-                  </span>
+              <Card className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant h-full">
+                <div className={`aspect-[4/3] bg-gradient-to-br ${product.color} relative overflow-hidden`}>
+                  {product.screenshot ? (
+                    <img
+                      src={product.screenshot}
+                      alt={product.title}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-20 h-20 rounded-2xl bg-background/80 backdrop-blur flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
+                        {product.tag === "Desktop App" ? <Terminal className="w-8 h-8 text-primary" /> : <Globe className="w-8 h-8 text-primary" />}
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-background/90 text-foreground border-0 backdrop-blur">{product.tag}</Badge>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{product.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-4">{product.desc}</p>
-                <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium">
-                  View Details <ArrowRight className="w-4 h-4" />
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors flex items-center gap-2">
+                    {product.url ? (
+                      <a
+                        href={product.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:text-primary transition-colors flex items-center gap-2"
+                      >
+                        {product.title}
+                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </a>
+                    ) : (
+                      product.title
+                    )}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{product.desc}</p>
                 </div>
               </Card>
             </Link>

@@ -20,6 +20,7 @@ export interface Product {
     url: string | null;
     color: string;
     screenshot: string | null;
+    screenshots?: string[];
     fullDescription: string;
     challenges: string[];
     solutions: string[];
