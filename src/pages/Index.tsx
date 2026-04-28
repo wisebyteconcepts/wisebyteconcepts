@@ -168,18 +168,27 @@ const Index = () => {
                   <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group border-border/50">
                     {/* Image/Color Area */}
                     <div className={`bg-gradient-to-br ${s.color} h-32 flex items-center justify-center relative overflow-hidden`}>
-                      {/* Background pattern effect */}
-                      <div className="absolute inset-0 opacity-30">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
-                      </div>
-                      
-                      {/* Icon */}
-                      {IconComponent && (
-                        <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
-                          <div className="w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg">
-                            <IconComponent className="w-8 h-8 text-slate-900 dark:text-white" />
+                      {s.screenshot ? (
+                        <img
+                          src={s.screenshot}
+                          alt={s.title}
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <>
+                          {/* Background pattern effect */}
+                          <div className="absolute inset-0 opacity-30">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
                           </div>
-                        </div>
+                          {IconComponent && (
+                            <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
+                              <div className="w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg">
+                                <IconComponent className="w-8 h-8 text-slate-900 dark:text-white" />
+                              </div>
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
 
