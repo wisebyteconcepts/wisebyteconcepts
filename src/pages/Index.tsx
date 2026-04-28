@@ -7,16 +7,8 @@ import { Link } from "react-router-dom";
 import Navbar from "@/shared/components/Navbar";
 import { useData } from "@/features/data/DataContext";
 import { getServiceIcon } from "@/shared/lib/getServiceIcon";
+import { LucideIcon as DynLucideIcon } from "@/shared/components/LucideIcon";
 import logo from "@/assets/wbc-logo.png";
-
-const skills = [
-  { icon: Terminal, name: "React" },
-  { icon: GitBranch, name: "TypeScript" },
-  { icon: Code2, name: "Tailwind CSS" },
-  { icon: Terminal, name: ".NET" },
-  { icon: Globe, name: "Node.js" },
-  { icon: GitBranch, name: "GitHub" },
-];
 
 const projects = [
   { tag: "Web", title: "Statoniq", desc: "Corporate website build & design.", url: "https://statoniq.com", color: "from-blue-500/20 to-indigo-500/20" },
@@ -34,7 +26,7 @@ const stats = [
 ];
 
 const Index = () => {
-  const { services } = useData();
+  const { services, skills } = useData();
 
   useEffect(() => {
     document.title = "Wise Byte Concepts — Software Studio for Modern Products";
@@ -217,16 +209,39 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Skills & tools we work with.</h2>
           <p className="text-muted-foreground text-lg">A blend of design and development tools we use to bring concepts to life.</p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {skills.map((s) => (
-            <Card key={s.name} className="p-6 flex flex-col items-center justify-center gap-3 border-border/50 hover:border-primary/40 hover:shadow-soft transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
-                <s.icon className="w-6 h-6 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-center">{s.name}</span>
-            </Card>
-          ))}
-        </div>
+        {skills.length === 0 ? (
+          <p className="text-muted-foreground">No skills added yet.</p>
+        ) : (
+          <div className="relative -mx-4 sm:-mx-6">
+            <div
+              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 sm:px-6 pb-4
+                         [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5
+                         [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full"
+            >
+              {skills.map((s) => (
+                <Card
+                  key={s.id}
+                  className="snap-start shrink-0 w-40 sm:w-44 p-6 flex flex-col items-center justify-center gap-3 border-border/50 hover:border-primary/40 hover:shadow-soft transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
+                    {s.icon ? (
+                      <DynLucideIcon name={s.icon} className="w-6 h-6 text-primary" />
+                    ) : (
+                      <Code2 className="w-6 h-6 text-primary" />
+                    )}
+                  </div>
+                  <span className="text-sm font-medium text-center">{s.name}</span>
+                  {s.category && (
+                    <span className="text-xs text-muted-foreground">{s.category}</span>
+                  )}
+                </Card>
+              ))}
+            </div>
+            {/* Edge fade */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-background to-transparent" />
+          </div>
+        )}
       </section>
 
       {/* CTA */}
