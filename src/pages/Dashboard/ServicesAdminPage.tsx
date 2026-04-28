@@ -25,6 +25,7 @@ import {
 } from "@/shared/ui/table";
 import { CrudPageShell } from "./_shared/CrudPageShell";
 import { ListInput } from "./_shared/ListInput";
+import { ImageInput } from "./_shared/ImageInput";
 
 const emptyService = (): Service => ({
     id: "",
@@ -173,16 +174,11 @@ const ServicesAdminPage = () => {
                             />
                         </div>
 
-                        <div className="space-y-2">
-                            <Label>Screenshot URL (optional)</Label>
-                            <Input
-                                value={form.screenshot ?? ""}
-                                onChange={(e) =>
-                                    setForm({ ...form, screenshot: e.target.value || null })
-                                }
-                                placeholder="https://..."
-                            />
-                        </div>
+                        <ImageInput
+                            label="Featured image"
+                            value={form.screenshot}
+                            onChange={(v) => setForm({ ...form, screenshot: v })}
+                        />
 
                         <div className="space-y-2">
                             <Label>Gradient Color</Label>
