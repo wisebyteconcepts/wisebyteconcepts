@@ -209,16 +209,39 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Skills & tools we work with.</h2>
           <p className="text-muted-foreground text-lg">A blend of design and development tools we use to bring concepts to life.</p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {skills.map((s) => (
-            <Card key={s.name} className="p-6 flex flex-col items-center justify-center gap-3 border-border/50 hover:border-primary/40 hover:shadow-soft transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
-                <s.icon className="w-6 h-6 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-center">{s.name}</span>
-            </Card>
-          ))}
-        </div>
+        {skills.length === 0 ? (
+          <p className="text-muted-foreground">No skills added yet.</p>
+        ) : (
+          <div className="relative -mx-4 sm:-mx-6">
+            <div
+              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 sm:px-6 pb-4
+                         [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5
+                         [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full"
+            >
+              {skills.map((s) => (
+                <Card
+                  key={s.id}
+                  className="snap-start shrink-0 w-40 sm:w-44 p-6 flex flex-col items-center justify-center gap-3 border-border/50 hover:border-primary/40 hover:shadow-soft transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
+                    {s.icon ? (
+                      <DynLucideIcon name={s.icon} className="w-6 h-6 text-primary" />
+                    ) : (
+                      <Code2 className="w-6 h-6 text-primary" />
+                    )}
+                  </div>
+                  <span className="text-sm font-medium text-center">{s.name}</span>
+                  {s.category && (
+                    <span className="text-xs text-muted-foreground">{s.category}</span>
+                  )}
+                </Card>
+              ))}
+            </div>
+            {/* Edge fade */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-background to-transparent" />
+          </div>
+        )}
       </section>
 
       {/* CTA */}
