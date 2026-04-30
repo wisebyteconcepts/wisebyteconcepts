@@ -10,42 +10,80 @@ export const defaultSkills: Skill[] = [
     { id: "figma", name: "Figma", category: "Design", level: 88 },
 ];
 
-
+const buildService = (s: Partial<Service> & Pick<Service, "id" | "name">): Service => ({
+    slug: s.id,
+    caption: s.caption ?? s.shortDescription ?? "",
+    header: s.header ?? s.name,
+    shortDescription: s.shortDescription ?? "",
+    fullDescription: s.fullDescription ?? "",
+    thumbnail: s.thumbnail ?? null,
+    bannerImage: s.bannerImage ?? null,
+    gallery: s.gallery ?? [],
+    category: s.category ?? "General",
+    tags: s.tags ?? [],
+    features: s.features ?? [],
+    deliverables: s.deliverables ?? [],
+    pricing: s.pricing ?? { model: "custom", note: "Contact for quote" },
+    estimatedDuration: s.estimatedDuration ?? "Flexible",
+    technologies: s.technologies ?? [],
+    relatedProjects: s.relatedProjects ?? [],
+    cta: s.cta ?? { label: "Schedule a consultation", url: "/contact" },
+    seo: s.seo ?? {},
+    isActive: s.isActive ?? true,
+    isFeatured: s.isFeatured ?? false,
+    order: s.order ?? 0,
+    color: s.color ?? "from-blue-500/20 to-cyan-500/20",
+    iconName: s.iconName,
+    ...s,
+    title: s.name,
+    description: s.shortDescription ?? "",
+    screenshot: s.bannerImage ?? s.thumbnail ?? null,
+});
 
 export const defaultServices: Service[] = [
-    {
+    buildService({
         id: "graphic-design",
         iconName: "Palette",
-        title: "Graphic Design",
-        description: "Brand identities, marketing collateral, and visuals with a polished, modern edge.",
+        name: "Graphic Design",
+        caption: "Brand identity & visual systems",
+        header: "Graphic Design",
+        shortDescription: "Brand identities, marketing collateral, and visuals with a polished, modern edge.",
         fullDescription:
             "Our graphic design services help you establish a strong visual identity that sets you apart from the competition. We work with you to understand your brand values and translate them into compelling visual designs.",
-        screenshot: null,
+        category: "Design",
+        tags: ["branding", "identity", "print", "social"],
         color: "from-purple-500/20 to-pink-500/20",
         features: [
             "Logo Design & Brand Identity",
-            "Marketing Collateral (Brochures, Business Cards)",
+            "Marketing Collateral",
             "Social Media Design",
             "Package & Label Design",
-            "Illustration & Custom Graphics",
-            "Brand Guidelines Development",
+            "Custom Illustration",
+            "Brand Guidelines",
         ],
-        process: [
-            "Discovery & Brand Briefing",
-            "Concept Development",
-            "Design Iterations",
-            "Client Feedback & Refinement",
-            "Final Delivery & Asset Optimization",
+        deliverables: [
+            "Logo files (SVG, PNG, PDF)",
+            "Brand guideline document",
+            "Print-ready collateral",
+            "Social media templates",
         ],
-    },
-    {
+        pricing: { model: "starting_at", amount: 1500, currency: "USD", note: "per project" },
+        estimatedDuration: "2–4 weeks",
+        technologies: ["Adobe Illustrator", "Photoshop", "Figma"],
+        order: 1,
+        isFeatured: true,
+    }),
+    buildService({
         id: "web-design",
         iconName: "Layout",
-        title: "Web Design",
-        description: "Responsive, conversion-focused websites that look sharp on every device.",
+        name: "Web Design",
+        caption: "Responsive, conversion-first websites",
+        header: "Web Design",
+        shortDescription: "Responsive, conversion-focused websites that look sharp on every device.",
         fullDescription:
             "We design beautiful, responsive websites that not only look amazing but also convert visitors into customers. Every design decision is made with user experience and business goals in mind.",
-        screenshot: null,
+        category: "Web",
+        tags: ["responsive", "ecommerce", "landing-page", "cms"],
         color: "from-blue-500/20 to-cyan-500/20",
         features: [
             "Responsive Web Design",
@@ -55,23 +93,29 @@ export const defaultServices: Service[] = [
             "Performance Optimization",
             "SEO-Friendly Structure",
         ],
-        process: [
-            "Strategy & Research",
-            "Wireframing",
-            "Visual Design",
-            "Prototyping",
-            "Development Handoff",
-            "Launch & Optimization",
+        deliverables: [
+            "High-fidelity Figma mockups",
+            "Responsive prototypes",
+            "Style guide & components",
+            "Developer handoff",
         ],
-    },
-    {
+        pricing: { model: "starting_at", amount: 3500, currency: "USD", note: "per site" },
+        estimatedDuration: "3–6 weeks",
+        technologies: ["Figma", "Webflow", "React", "Tailwind"],
+        order: 2,
+        isFeatured: true,
+    }),
+    buildService({
         id: "ui-ux-development",
         iconName: "PenTool",
-        title: "UI/UX Development",
-        description: "Thoughtful interfaces and user flows backed by clean, production-ready code.",
+        name: "UI/UX Development",
+        caption: "Interfaces backed by clean code",
+        header: "UI/UX Development",
+        shortDescription: "Thoughtful interfaces and user flows backed by clean, production-ready code.",
         fullDescription:
-            "We create intuitive user interfaces combined with seamless user experiences, backed by clean, scalable code. Our approach ensures your product is both beautiful and functional.",
-        screenshot: null,
+            "We create intuitive user interfaces combined with seamless user experiences, backed by clean, scalable code.",
+        category: "Product",
+        tags: ["ui", "ux", "design-system", "research"],
         color: "from-emerald-500/20 to-teal-500/20",
         features: [
             "User Research & Testing",
@@ -81,23 +125,28 @@ export const defaultServices: Service[] = [
             "Usability Testing",
             "Design System Creation",
         ],
-        process: [
-            "User Research",
-            "Persona Development",
-            "Journey Mapping",
-            "Wireframe Creation",
-            "Visual Design",
-            "Interactive Prototyping",
+        deliverables: [
+            "User research report",
+            "Interactive prototype",
+            "Design system in code",
+            "Accessibility audit",
         ],
-    },
-    {
+        pricing: { model: "hourly", amount: 95, currency: "USD", note: "per hour" },
+        estimatedDuration: "Ongoing",
+        technologies: ["Figma", "React", "TypeScript", "Storybook"],
+        order: 3,
+    }),
+    buildService({
         id: "desktop-mobile-apps",
         iconName: "Smartphone",
-        title: "Desktop & Mobile Apps",
-        description: "Cross-platform apps engineered for performance, reliability, and scale.",
+        name: "Desktop & Mobile Apps",
+        caption: "Cross-platform apps built to scale",
+        header: "Desktop & Mobile Apps",
+        shortDescription: "Cross-platform apps engineered for performance, reliability, and scale.",
         fullDescription:
-            "We build powerful applications for desktop and mobile platforms that are engineered for performance, reliability, and scalability. From native apps to cross-platform solutions, we have the expertise.",
-        screenshot: null,
+            "We build powerful applications for desktop and mobile platforms that are engineered for performance, reliability, and scalability.",
+        category: "Engineering",
+        tags: ["ios", "android", "desktop", "cross-platform"],
         color: "from-orange-500/20 to-red-500/20",
         features: [
             "iOS & Android Development",
@@ -105,17 +154,19 @@ export const defaultServices: Service[] = [
             "Desktop Applications",
             "Cloud Integration",
             "Real-time Features",
-            "App Maintenance & Support",
-        ],
-        process: [
-            "Requirements Gathering",
-            "Architecture Design",
-            "Development Sprint",
-            "Testing & QA",
-            "Deployment",
             "Maintenance & Support",
         ],
-    },
+        deliverables: [
+            "App store deliverables",
+            "Source code & docs",
+            "CI/CD pipeline",
+            "Post-launch support plan",
+        ],
+        pricing: { model: "custom", note: "Scope-based" },
+        estimatedDuration: "8–16 weeks",
+        technologies: ["React Native", "Electron", ".NET", "Node.js"],
+        order: 4,
+    }),
 ];
 
 export const defaultProducts: Product[] = [
@@ -129,24 +180,11 @@ export const defaultProducts: Product[] = [
         screenshot: null,
         fullDescription:
             "Statoniq is a modern corporate website designed to showcase professional services with a clean, intuitive interface.",
-        challenges: [
-            "Scalable content architecture",
-            "Responsive design across devices",
-            "Performance optimization",
-        ],
-        solutions: [
-            "Modern frontend stack",
-            "Responsive design system",
-            "SEO optimization",
-            "CMS integration",
-        ],
+        challenges: ["Scalable content architecture", "Responsive design across devices", "Performance optimization"],
+        solutions: ["Modern frontend stack", "Responsive design system", "SEO optimization", "CMS integration"],
         technologies: ["React", "TypeScript", "Tailwind CSS"],
-        results: [
-            "50% faster load time",
-            "40% increase in engagement",
-        ],
+        results: ["50% faster load time", "40% increase in engagement"],
     },
-
     {
         id: "essence4world",
         tag: "Web",
@@ -155,24 +193,12 @@ export const defaultProducts: Product[] = [
         url: "https://essence4world.com",
         color: "from-violet-500/20 to-blue-500/20",
         screenshot: null,
-        fullDescription:
-            "A content platform focused on storytelling and engagement with scalable content management.",
-        challenges: [
-            "Content scalability",
-            "User engagement",
-        ],
-        solutions: [
-            "Custom CMS",
-            "Dynamic content system",
-            "Social sharing integration",
-        ],
+        fullDescription: "A content platform focused on storytelling and engagement with scalable content management.",
+        challenges: ["Content scalability", "User engagement"],
+        solutions: ["Custom CMS", "Dynamic content system", "Social sharing integration"],
         technologies: ["Next.js", "GraphQL", "Firebase"],
-        results: [
-            "10k+ monthly users",
-            "High engagement rate",
-        ],
+        results: ["10k+ monthly users", "High engagement rate"],
     },
-
     {
         id: "valley-hospital",
         tag: "Healthcare",
@@ -181,24 +207,12 @@ export const defaultProducts: Product[] = [
         url: "https://valleyhospitalsilchar.com",
         color: "from-blue-600/20 to-cyan-500/20",
         screenshot: null,
-        fullDescription:
-            "A patient-focused healthcare website with appointment booking and accessible UI.",
-        challenges: [
-            "Secure data handling",
-            "Easy appointment booking",
-        ],
-        solutions: [
-            "Secure backend",
-            "Simplified booking flow",
-            "Accessibility-first UI",
-        ],
+        fullDescription: "A patient-focused healthcare website with appointment booking and accessible UI.",
+        challenges: ["Secure data handling", "Easy appointment booking"],
+        solutions: ["Secure backend", "Simplified booking flow", "Accessibility-first UI"],
         technologies: ["Vue", "Express", "PostgreSQL"],
-        results: [
-            "Improved patient satisfaction",
-            "Reduced booking friction",
-        ],
+        results: ["Improved patient satisfaction", "Reduced booking friction"],
     },
-
     {
         id: "ivory-squares",
         tag: "Real Estate",
@@ -207,23 +221,12 @@ export const defaultProducts: Product[] = [
         url: "https://ivorysquares.com",
         color: "from-sky-500/20 to-blue-500/20",
         screenshot: null,
-        fullDescription:
-            "A real estate platform with property listings, search, and lead capture.",
-        challenges: [
-            "Large image handling",
-            "Lead tracking",
-        ],
-        solutions: [
-            "Optimized media delivery",
-            "Integrated CRM",
-        ],
+        fullDescription: "A real estate platform with property listings, search, and lead capture.",
+        challenges: ["Large image handling", "Lead tracking"],
+        solutions: ["Optimized media delivery", "Integrated CRM"],
         technologies: ["Angular", "Node.js", "MongoDB"],
-        results: [
-            "Increased lead conversion",
-            "High user engagement",
-        ],
+        results: ["Increased lead conversion", "High user engagement"],
     },
-
     {
         id: "inventory-pro",
         tag: "Desktop App",
@@ -232,20 +235,10 @@ export const defaultProducts: Product[] = [
         url: null,
         color: "from-indigo-500/20 to-blue-500/20",
         screenshot: null,
-        fullDescription:
-            "A desktop application for managing inventory across multiple locations.",
-        challenges: [
-            "Multi-location tracking",
-            "Real-time updates",
-        ],
-        solutions: [
-            "Centralized inventory system",
-            "Automated stock tracking",
-        ],
+        fullDescription: "A desktop application for managing inventory across multiple locations.",
+        challenges: ["Multi-location tracking", "Real-time updates"],
+        solutions: ["Centralized inventory system", "Automated stock tracking"],
         technologies: [".NET", "WPF", "SQL Server"],
-        results: [
-            "Reduced inventory errors",
-            "Improved efficiency",
-        ],
+        results: ["Reduced inventory errors", "Improved efficiency"],
     },
 ];
