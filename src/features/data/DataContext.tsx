@@ -64,27 +64,30 @@ interface DataContextType {
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
+const loadStored = <T,>(key: string, fallback: T, transform?: (raw: any) => T): T => {
+    if (typeof window === "undefined") return fallback;
+    try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return fallback;
+        const parsed = JSON.parse(raw);
+        return transform ? transform(parsed) : (parsed as T);
+    } catch {
+        return fallback;
+    }
+};
+
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
-    const [services, setServices] = useState<Service[]>(defaultServices);
-    const [products, setProducts] = useState<Product[]>(defaultProducts);
-    const [skills, setSkills] = useState<Skill[]>(defaultSkills);
-
-    useEffect(() => {
-        const storedServices = localStorage.getItem("services");
-        const storedProducts = localStorage.getItem("products");
-        const storedSkills = localStorage.getItem("skills");
-
-        if (storedServices) {
-            try {
-                const parsed = JSON.parse(storedServices);
-                setServices(Array.isArray(parsed) ? parsed.map(migrateService) : defaultServices);
-            } catch {
-                setServices(defaultServices);
-            }
-        }
-        if (storedProducts) setProducts(JSON.parse(storedProducts));
-        if (storedSkills) setSkills(JSON.parse(storedSkills));
-    }, []);
+    const [services, setServices] = useState<Service[]>(() =>
+        loadStored<Service[]>("services", defaultServices, (parsed) =>
+            Array.isArray(parsed) ? parsed.map(migrateService) : defaultServices,
+        ),
+    );
+    const [products, setProducts] = useState<Product[]>(() =>
+        loadStored<Product[]>("products", defaultProducts),
+    );
+    const [skills, setSkills] = useState<Skill[]>(() =>
+        loadStored<Skill[]>("skills", defaultSkills),
+    );
 
     useEffect(() => {
         localStorage.setItem("services", JSON.stringify(services));
