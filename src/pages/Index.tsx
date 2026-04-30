@@ -184,46 +184,49 @@ const Index = () => {
             <p className="text-muted-foreground text-lg">From first sketch to production deploy — one team, all the way through.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
-            {services.map((s) => {
-              const IconComponent = getServiceIcon(s.iconName);
-              return (
-                <Link key={s.id} to={`/services/${s.id}`}>
-                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group border-border/50">
-                    {/* Image/Color Area */}
-                    <div className={`bg-gradient-to-br ${s.color} aspect-video flex items-center justify-center relative overflow-hidden`}>
-                      {s.screenshot ? (
-                        <img
-                          src={s.screenshot}
-                          alt={s.title}
-                          loading="lazy"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      ) : (
-                        <>
-                          {/* Background pattern effect */}
-                          <div className="absolute inset-0 opacity-30">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
-                          </div>
-                          {IconComponent && (
-                            <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
-                              <div className="w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg">
-                                <IconComponent className="w-8 h-8 text-slate-900 dark:text-white" />
-                              </div>
+            {services
+              .filter((s) => s.isActive !== false)
+              .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+              .map((s) => {
+                const IconComponent = getServiceIcon(s.iconName);
+                const cardImage = s.thumbnail || s.bannerImage || s.screenshot;
+                return (
+                  <Link key={s.id} to={`/services/${s.slug || s.id}`}>
+                    <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group border-border/50">
+                      {/* Image/Color Area */}
+                      <div className={`bg-gradient-to-br ${s.color} aspect-video flex items-center justify-center relative overflow-hidden`}>
+                        {cardImage ? (
+                          <img
+                            src={cardImage}
+                            alt={s.name || s.title || ""}
+                            loading="lazy"
+                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        ) : (
+                          <>
+                            <div className="absolute inset-0 opacity-30">
+                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
                             </div>
-                          )}
-                        </>
-                      )}
-                    </div>
+                            {IconComponent && (
+                              <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg">
+                                  <IconComponent className="w-8 h-8 text-slate-900 dark:text-white" />
+                                </div>
+                              </div>
+                            )}
+                          </>
+                        )}
+                      </div>
 
-                    {/* Content Area */}
-                    <div className="flex flex-col flex-1 p-6">
-                      <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{s.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">{s.description}</p>
-                    </div>
-                  </Card>
-                </Link>
-              );
-            })}
+                      {/* Content Area */}
+                      <div className="flex flex-col flex-1 p-6">
+                        <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{s.name || s.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed flex-1">{s.caption || s.shortDescription || s.description}</p>
+                      </div>
+                    </Card>
+                  </Link>
+                );
+              })}
           </div>
                 <div className="flex justify-center mt-8">
                   <Button asChild size="lg" variant="outline">
