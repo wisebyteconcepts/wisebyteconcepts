@@ -4,6 +4,44 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { defaultServices, defaultProducts, defaultSkills } from "./data.defaults";
 import type { Service, Product, Skill } from "./data.types";
 
+/** Upgrade legacy services from older shape to the current Service schema. */
+const migrateService = (raw: any): Service => {
+    const name = raw.name ?? raw.title ?? "Untitled";
+    const shortDescription = raw.shortDescription ?? raw.description ?? "";
+    const slug = raw.slug ?? raw.id;
+    return {
+        id: raw.id,
+        slug,
+        name,
+        caption: raw.caption ?? shortDescription,
+        header: raw.header ?? name,
+        shortDescription,
+        fullDescription: raw.fullDescription ?? "",
+        thumbnail: raw.thumbnail ?? raw.screenshot ?? null,
+        bannerImage: raw.bannerImage ?? raw.screenshot ?? null,
+        gallery: raw.gallery ?? [],
+        category: raw.category ?? "General",
+        tags: raw.tags ?? [],
+        features: raw.features ?? [],
+        deliverables: raw.deliverables ?? [],
+        pricing: raw.pricing ?? { model: "custom", note: "Contact for quote" },
+        estimatedDuration: raw.estimatedDuration ?? "Flexible",
+        technologies: raw.technologies ?? [],
+        relatedProjects: raw.relatedProjects ?? [],
+        cta: raw.cta ?? { label: "Schedule a consultation", url: "/contact" },
+        seo: raw.seo ?? {},
+        isActive: raw.isActive ?? true,
+        isFeatured: raw.isFeatured ?? false,
+        order: raw.order ?? 0,
+        iconName: raw.iconName,
+        color: raw.color ?? "from-blue-500/20 to-cyan-500/20",
+        title: name,
+        description: shortDescription,
+        screenshot: raw.bannerImage ?? raw.screenshot ?? raw.thumbnail ?? null,
+        process: raw.process,
+    };
+};
+
 interface DataContextType {
     services: Service[];
     products: Product[];
@@ -36,7 +74,14 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
         const storedProducts = localStorage.getItem("products");
         const storedSkills = localStorage.getItem("skills");
 
-        if (storedServices) setServices(JSON.parse(storedServices));
+        if (storedServices) {
+            try {
+                const parsed = JSON.parse(storedServices);
+                setServices(Array.isArray(parsed) ? parsed.map(migrateService) : defaultServices);
+            } catch {
+                setServices(defaultServices);
+            }
+        }
         if (storedProducts) setProducts(JSON.parse(storedProducts));
         if (storedSkills) setSkills(JSON.parse(storedSkills));
     }, []);
