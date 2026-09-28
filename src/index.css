@@ -50,6 +50,7 @@
     --shadow-elegant: 0 10px 40px -10px hsl(222 100% 59% / 0.25);
     --shadow-soft: 0 4px 20px -4px hsl(222 50% 30% / 0.08);
     --shadow-glow: 0 0 60px hsl(222 100% 70% / 0.4);
+    --spotlight: 222 100% 70% / 0.16;
 
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -101,6 +102,7 @@
     --shadow-elegant: 0 10px 40px -10px hsl(222 100% 65% / 0.4);
     --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.4);
     --shadow-glow: 0 0 60px hsl(222 100% 75% / 0.3);
+    --spotlight: 222 100% 75% / 0.14;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -166,4 +168,32 @@
   }
   .animate-fade-up { animation: fade-up 0.6s var(--transition-smooth) both; }
   .animate-float { animation: float 6s ease-in-out infinite; }
+
+  .spotlight-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 10;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(260px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), hsl(var(--spotlight)), transparent 70%);
+    transition: opacity 240ms var(--transition-smooth);
+  }
+
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up,
+    .animate-float,
+    .animate-pulse {
+      animation: none;
+    }
+
+    .spotlight-card::before {
+      display: none;
+    }
+  }
 }
