@@ -8,6 +8,9 @@ import Navbar from "@/shared/components/Navbar";
 import { useData } from "@/features/data/DataContext";
 import { getServiceIcon } from "@/shared/lib/getServiceIcon";
 import { LucideIcon as DynLucideIcon } from "@/shared/components/LucideIcon";
+import { BlurReveal } from "@/shared/components/motion/BlurReveal";
+import { ScrollReveal } from "@/shared/components/motion/ScrollReveal";
+import { SpotlightCard } from "@/shared/components/motion/SpotlightCard";
 import logo from "@/assets/wbc-logo.png";
 
 const stats = [
@@ -64,26 +67,30 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-hero" aria-hidden />
         <div className="absolute inset-0 bg-gradient-mesh opacity-60" aria-hidden />
         <div className="container relative py-24 md:py-36">
-          <div className="max-w-3xl animate-fade-up">
+          <div className="max-w-3xl">
             <Badge variant="secondary" className="mb-6 bg-accent text-accent-foreground border-0 px-3 py-1">
               <span className="w-1.5 h-1.5 rounded-full bg-primary mr-2 animate-pulse" />
               Now booking Q3 projects
             </Badge>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6">
-              We build <span className="text-gradient-primary">software</span> with intent.
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-              Wise Byte Concepts is a small studio crafting modern web, AI, and cloud products
-              for ambitious teams. Thoughtful design. Engineered to last.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-elegant">
-                <a href="#work">View our work <ArrowRight className="ml-2 h-4 w-4" /></a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="#services">Our services</a>
-              </Button>
-            </div>
+            <BlurReveal>
+              <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6">
+                We build <span className="text-gradient-primary">software</span> with intent.
+              </h1>
+            </BlurReveal>
+            <BlurReveal delay={0.08}>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
+                Wise Byte Concepts is a small studio crafting modern web, AI, and cloud products
+                for ambitious teams. Thoughtful design. Engineered to last.
+              </p>
+            </BlurReveal>
+            <ScrollReveal delay={0.16} className="flex flex-wrap gap-3">
+                <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 transition-opacity shadow-elegant">
+                  <a href="#work">View our work <ArrowRight className="ml-2 h-4 w-4" /></a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a href="#services">Our services</a>
+                </Button>
+            </ScrollReveal>
           </div>
 
           {/* Floating logo accent */}
@@ -98,23 +105,23 @@ const Index = () => {
 
       {/* Stats */}
       <section className="border-y border-border/50 bg-secondary/30">
-        <div className="container py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <ScrollReveal className="container py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="text-center md:text-left">
               <div className="text-3xl md:text-4xl font-bold text-gradient-primary">{s.value}</div>
               <div className="text-sm text-muted-foreground mt-1">{s.label}</div>
             </div>
           ))}
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Work */}
       <section id="work" className="container py-24">
-        <div className="max-w-2xl mb-12">
+        <ScrollReveal className="max-w-2xl mb-12">
           <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">Selected Work</Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Products we're proud of.</h2>
           <p className="text-muted-foreground text-lg">A glimpse at recent collaborations across SaaS, AI, fintech, and more.</p>
-        </div>
+        </ScrollReveal>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
           {products.map((p) => {
             const CardInner = (
@@ -160,11 +167,15 @@ const Index = () => {
               </>
             );
             return (
-              <Link key={p.id} to={`/products/${p.id}`}>
-                <Card className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant cursor-pointer h-full">
-                  {CardInner}
-                </Card>
-              </Link>
+              <ScrollReveal key={p.id} delay={Math.min(0.04 * products.indexOf(p), 0.16)} className="h-full">
+                <SpotlightCard>
+                  <Link to={`/products/${p.id}`} className="block h-full">
+                    <Card className="group relative overflow-hidden border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant cursor-pointer h-full">
+                      {CardInner}
+                    </Card>
+                  </Link>
+                </SpotlightCard>
+              </ScrollReveal>
             );
            })}
          </div>
@@ -178,11 +189,11 @@ const Index = () => {
        {/* Services */}
       <section id="services" className="bg-secondary/40 border-y border-border/50">
         <div className="container py-24">
-          <div className="max-w-2xl mb-12">
+          <ScrollReveal className="max-w-2xl mb-12">
             <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">What we do</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Services, end to end.</h2>
             <p className="text-muted-foreground text-lg">From first sketch to production deploy — one team, all the way through.</p>
-          </div>
+          </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
             {services
               .filter((s) => s.isActive !== false)
@@ -191,7 +202,9 @@ const Index = () => {
                 const IconComponent = getServiceIcon(s.iconName);
                 const cardImage = s.thumbnail || s.bannerImage || s.screenshot;
                 return (
-                  <Link key={s.id} to={`/services/${s.slug || s.id}`}>
+                  <ScrollReveal key={s.id} delay={Math.min(0.04 * services.indexOf(s), 0.16)} className="h-full">
+                    <SpotlightCard>
+                    <Link to={`/services/${s.slug || s.id}`} className="block h-full">
                     <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group border-border/50">
                       {/* Image/Color Area */}
                       <div className={`bg-gradient-to-br ${s.color} aspect-video flex items-center justify-center relative overflow-hidden`}>
@@ -224,7 +237,9 @@ const Index = () => {
                         <p className="text-sm text-muted-foreground leading-relaxed flex-1">{s.caption || s.shortDescription || s.description}</p>
                       </div>
                     </Card>
-                  </Link>
+                    </Link>
+                    </SpotlightCard>
+                  </ScrollReveal>
                 );
               })}
           </div>
@@ -238,15 +253,15 @@ const Index = () => {
 
       {/* Skills */}
       <section id="skills" className="container py-24">
-        <div className="max-w-2xl mb-12">
+        <ScrollReveal className="max-w-2xl mb-12">
           <Badge variant="secondary" className="mb-3 bg-accent text-accent-foreground border-0">Toolkit</Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Skills & tools we work with.</h2>
           <p className="text-muted-foreground text-lg">A blend of design and development tools we use to bring concepts to life.</p>
-        </div>
+        </ScrollReveal>
         {skills.length === 0 ? (
           <p className="text-muted-foreground">No skills added yet.</p>
         ) : (
-          <div className="relative -mx-4 sm:-mx-6">
+          <ScrollReveal className="relative -mx-4 sm:-mx-6">
             <div
               ref={skillsCarouselRef}
               className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 sm:px-6 pb-4 hide-scrollbar"
@@ -273,7 +288,7 @@ const Index = () => {
             {/* Edge fade */}
             <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-background to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-background to-transparent" />
-          </div>
+          </ScrollReveal>
         )}
       </section>
 
